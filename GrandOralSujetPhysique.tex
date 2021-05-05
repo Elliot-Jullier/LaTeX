@@ -41,18 +41,60 @@ avec un perisélene à 180° et une altitude de $15,2\ km$.
 \begin{tikzpicture}
     \def \largeRadius {3}
     \def \smallRadius {1}
-    \fill[black!30] (0,0) circle (0.2 * \largeRadius);
-    \draw [ultra thick] (-0.05*\largeRadius,-0.05*\largeRadius) -- (0.05*\largeRadius,0.05*\largeRadius);
-        \draw [ultra thick] (-0.05*\largeRadius, 0.05*\largeRadius) -- (0.05*\largeRadius,-0.05*\largeRadius);
-        \node at (0.12*\largeRadius,-0.06*\largeRadius) {O};
-    \draw[thick] (0,0) circle (\largeRadius);
-    \draw[thick] ({(\largeRadius - \smallRadius)*0.5},0) + (0:{(\largeRadius + \smallRadius)*0.5} and 1.5) arc (0:180:{(\largeRadius + \smallRadius)*0.5} and 1.5);
-    \draw[dashed] ({(\largeRadius - \smallRadius)*0.5},0) + (180:{(\largeRadius + \smallRadius)*0.5} and 1.5) arc (180:360:{(\largeRadius + \smallRadius)*0.5} and 1.5);
-    \draw[dotted] (0,0) circle (\smallRadius);
+    % Fake Moon
+    \fill[black!30] (0,0) circle (0.2 * \largeRadius); 
+    % Center point
+    \draw [ultra thick] (-0.05*\largeRadius,-0.05*\largeRadius) -- (0.05*\largeRadius,0.05*\largeRadius);  
+    \draw [ultra thick] (-0.05*\largeRadius, 0.05*\largeRadius) -- (0.05*\largeRadius,-0.05*\largeRadius);  
+    \node at (0.12*\largeRadius,-0.06*\largeRadius) {O}; 
+    % Primary Orbit
+    \draw[thick] (0,0) circle (\largeRadius); 
+    % Intermediary Ellipse
+    \draw[thick] ({(\largeRadius - \smallRadius)*0.5},0) + (0:{(\largeRadius + \smallRadius)*0.5} and 1.5) arc (0:180:{(\largeRadius + \smallRadius)*0.5} and 1.5);  % Filled in semi-circle
+    \draw[dashed] ({(\largeRadius - \smallRadius)*0.5},0) + (180:{(\largeRadius + \smallRadius)*0.5} and 1.5) arc (180:360:{(\largeRadius + \smallRadius)*0.5} and 1.5); % Dashed seim-circle
+    % Theoretical Small Orbit
+    \draw[dotted] (0,0) circle (\smallRadius); 
+    % Aposelene Point
+    \draw [thick] (0.95*\largeRadius, -0.05 * \largeRadius) -- (1.05 * \largeRadius, 0.05 * \largeRadius);
+    \draw [thick] (0.95 * \largeRadius, 0.05 * \largeRadius) -- (1.05 * \largeRadius, -0.05 * \largeRadius);
+    \node at (1.15 * \largeRadius, 0) {\small A \normalsize};
+    % Periselene Point
+    \draw [thick] (-\smallRadius - 0.05* \largeRadius, -0.05 * \largeRadius) -- (-\smallRadius + 0.05 * \largeRadius, 0.05 * \largeRadius);
+    \draw [thick] (-\smallRadius - 0.05 * \largeRadius, 0.05 * \largeRadius) -- (-\smallRadius + 0.05 * \largeRadius, -0.05 * \largeRadius);
+    \node at (-0.48 * \largeRadius, 0) {\small P \normalsize};
+    % Indication arrows
+    \draw [ultra thick,->] (0, \largeRadius) -- (-0.7* \largeRadius, \largeRadius) node[midway, above, align=center, xshift = -0.2cm] {$\overrightarrow{v_{c1}}$};
+    \draw [ultra thick, ->] (\largeRadius, 0) -- (\largeRadius, 0.7 * \largeRadius) node[midway, right, align=center] {$\overrightarrow{v_{\text{A}}}$};
+    \draw [ultra thick, ->] (\largeRadius, 0) -- (\largeRadius, -0.4 * \largeRadius) node[midway, right, align=center] {$\overrightarrow{\Delta v}$};
+    \draw [ultra thick, ->] (-\smallRadius, 0) -- (-\smallRadius, -0.4 * \largeRadius) node[midway, left, align=center] {$\overrightarrow{v_{\text{P}}}$};
+    % Legende
+    \node[text width = 8cm] at (3 * \largeRadius, 0.75 * \largeRadius) {$A$ - L'aposélene pour l'orbite elliptique};
+    \node[text width = 8cm] at (3 * \largeRadius, 0.45 * \largeRadius) {$P$ - Le périsélene pour l'orbite elliptique};
+    \node[text width = 8cm] at (3 * \largeRadius, 0.15 * \largeRadius) {$\overrightarrow{v_{c1}}$ - La vitesse pour une orbite circulaire};
+    \node[text width = 8cm] at (3 * \largeRadius, - 0.15 * \largeRadius) {$\overrightarrow{v_{\text{A}}}$ - La vitesse à A pour l'orbite elliptique};
+    \node[text width = 8cm] at (3 * \largeRadius, - 0.45 * \largeRadius) {$\overrightarrow{v_{\text{P}}}$ - La vitesse à P pour l'orbite elliptique};
+    \node[text width = 8cm] at (3 * \largeRadius, - 0.75 * \largeRadius) {$\overrightarrow{\Delta v}$ - Le $\Delta v$ nécesaire pour passer de l'orbite circulaire à l'orbite elliptique};
+    \draw (3 * \largeRadius - 4.5, -0.75 * \largeRadius - 0.75) -- (3 * \largeRadius -4.5, 0.75 * \largeRadius + 0.5) -- (3 * \largeRadius +4.5, 0.75 * \largeRadius + 0.5) -- (3 * \largeRadius + 4.5, -0.75 * \largeRadius -0.75) -- (3 * \largeRadius -4.5, -0.75 * \largeRadius - 0.75);
+
+
 \end{tikzpicture}
 \\
-\emph{Figure 1 - Transfer de Hohmann pour approcher la Lune}
+\vspace{15mm}
+\emph{Figure 1 - Transfer de Hohmann (partiel) pour approcher la Lune}
 \end{center}
+\vspace{5mm}
+Normalement, en arrivant à l'aposélene, on effectue une rotation pour pouvoir ralentir de nouveau le vaisseau.
+Mais nous voulons pas circulariser l'orbite à celle de l'aposélene, mais plutot atterrir.
+
+\subsection{- Phase de Descente}
+\subsubsection{- Phase de Freinage}
+On commence a une altitude de $15.2\ km$ avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694.6\ m \cdot s^{-1}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
+verticale négligeable. 
+\\
+Cette phase a comme but de ralentir majoritairement la vitesse horizontale, en en ralentissant
+
+
+
 
 \section{- La méchanique dans le modèle}
 \subsection{- Implementation de la position, vitesse et acceleration}
