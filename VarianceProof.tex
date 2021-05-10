@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\begin{document}
+\subsection*{Proof that the French and English ways of calculating Variance are the same}
+\[ V(X) = \sum_{i} p_i(x_i-\bar{x})^2 = \overline{x^2} - \bar{x}^2\]
+
+\noindent
+We can start by defining $\sum_{i}p_i x_i = \bar{x} = E(X)$ :
+\[
+\begin{aligned}[t] 
+V(x) &= \sum_{i} p_i(x_i - \bar{x})^2 \\
+    &= \sum_{i} p_i \left((\bar{x}^2 - 2\bar{x}x_i + (x_i)^2\right) \\
+    &= \sum_{i} p_i(\bar{x})^2 - 2\bar{x} p_i x_i + p_i(x_i)^2 \\
+    &= (\bar{x})^2 \left(\sum_{i}p_i\right) - 2\bar{x}\left(\sum_{i}x_ip_i\right) + \sum_{i}p_i(x_i)^2 \\
+    &= (\bar{x})^2 \cdot 1 - 2 \bar{x} \bar{x} + \sum_{i} p_i(x_i)^2 \\
+    &= (\bar{x})^2 - 2(\bar{x})^2 + \overline{x^2} \\
+    &= \overline{x^2} - \bar{x}^2
+\end{aligned}
+\]
+Donc, $V(x) = \sum_{i}p_i(x_i-\bar{x})^2 = \overline{x^2}-\bar{x}^2\ \square$
+
+\end{document}
