@@ -1,6 +1,10 @@
 \documentclass[a4paper, 12pt]{scrartcl}
 
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
 \usepackage{amsmath}
+\usepackage{siunitx}
 \usepackage{graphicx}
 \graphicspath{{./images/}}
 \usepackage{hyperref}
@@ -29,19 +33,20 @@
 
 
 \subsection{- Introduction}
-Après les multiples victoires technologiques de l'URSS dans la course des étoiles, premièrement
-le satellite de Spoutnik 1 en 1957 choque le monde ainsi que Laika, ensuite avec Yuri Gagarin, premier homme dans l'espace ; 
+Après les multiples victoires technologiques de l'URSS dans la course des étoiles, premièrement le satellite de Spoutnik 1 en 1957 choque le monde ainsi que Laika, ensuite avec Yuri Gagarin, premier homme dans l'espace ; 
 les victoires consécutives tel que la premiere sortie extravéhiculaire. 
 \\
 \\
+\indent
 Le Président Kennedy annonca la participation des Etats-Unis de cette compétition spatiale en 
 Septembre 1962 qui promet de mettre un homme sur la Lune avant la fin de la décennie. 
 Le 16 Juillet 1969, Apollo 11, contenant les astronautes Neil Armstrong, Edwin ``Buzz'' Aldrin et Michael Collins
 part de la Terre, l'orbite plusieurs fois et puis envoie une petite navette contenant ces trois astronautes vers la Lune.
 En arrivant dans la sphère d'influence (région de l'espace ou un certain corps céleste est la force dominante) de la Lune trois jours plus tard, la vitesse est bien trop grande et le vaisseau n'orbite pas la Lune, il faut effectuer un premier ajustement 
-pour permettre aux astronautes de se situer à une orbite de $111\ km$ au dessus de la surface lunaire.
+pour permettre aux astronautes de se situer à une orbite de $111$ km au dessus de la surface lunaire.
 \\
 \\
+\indent
 On a construit une simulation qui cherche à mieux comprendre comment l'atterissage sur la Lune
 s'est produite, cette mission a été choisie grâce à sa signification historique et les
 données importantes récoltées. 
@@ -54,10 +59,12 @@ Nous cherchons à modeliser la mission de Apollo 11 du 20-21 Juillet 1969 comme 
 de fusée sur la Lune car cela donne un modèle avec beaucoups de statistiques grace à sa sigificance 
 historique. 
 \\
-Il y a deux capsules en orbite a $111\ km$ d'altitude au-dessus de la surface de la Lune. La \emph{Command and Service Module} - CSM,
+\\
+\indent
+Il y a deux capsules en orbite a $111$ km d'altitude au-dessus de la surface de la Lune: la \emph{Command and Service Module} - CSM,
 partie qui reste en orbite avec l'astronaut Michael Collins, et le \emph{Lunar Module} - LM, avec Neil Armstrong et Edwin `Buzz' Aldrin.
-En sachant que les deux parties attachés sont en orbite circulaire a une altitude de $111\ km$ on peut calculer
-la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ m\cdot s^{-1}$. 
+En sachant que les deux parties attachés sont en orbite circulaire a une altitude de $111$ km on peut calculer
+la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ \si{m.s^{-1}}$. 
 
 \begin{center}
 \includegraphics[width=300pt]{CSM+LM_Schema}
@@ -67,10 +74,10 @@ la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ m\cdot s^{-1}$.
 \end{center}
 
 \subsection{- Transfer de Hohmann : Ellipse Intermédiaire}
-On sépare ensuite les deux modules et on assure une distance d'au moins $10\ m$ entre eux, puis on pointe
-le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ m\cdot s^{-1}$ 
-ce qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111\ km$) et
-avec un perisélene (point où l'altitude est minimale) à 180° de rotation autour du corps céleste et une altitude de $15,2\ km$. 
+On sépare ensuite les deux modules et on assure une distance d'au moins $10$ m entre eux, puis on pointe
+le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ \si{m.s^{-1}}$
+ce qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111$ km) et
+avec un perisélene (point où l'altitude est minimale) à 180° de rotation autour du corps céleste et une altitude de $15,2$ km. 
 \\
 \begin{center}
 \begin{tikzpicture}
@@ -115,9 +122,10 @@ avec un perisélene (point où l'altitude est minimale) à 180° de rotation aut
 \end{tikzpicture}
 \\
 \vspace{5mm}
-\emph{Figure 1 - Transfer de Hohmann (partiel) pour approcher la Lune}
+\emph{Figure 2 - Transfer de Hohmann (partiel) pour approcher la Lune}
 \end{center}
 \vspace{5mm}
+\indent
 Normalement, en arrivant au périsélene, on effectue une rotation pour pouvoir ralentir de nouveau le vaisseau
 et circulariser l'orbite (pour que l'eccentricité soit de 0 et de garder l'altitude du périsélene).
 
@@ -126,17 +134,18 @@ La phase de déscente est plus dur à modeliser car elle varie dépendant des ci
 et surtout n'a pas de bonnes equations pour modeliser la vitesse mais plutôt des lignes directrices à suivre - 
 il ne faut pas oublier que seuls les meilleurs pilotes pouvaient devenir astronautes et donc leur capacité surpasser de loins
 les ordinateurs de l'époque.
+
 \subsubsection{- Phase de Freinage}
-On commence a une altitude de $15,2\ km$ avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694,6\ m \cdot s^{-1}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
-verticale négligeable. On se situe environ $480\ km$ (à vol d'oiseau) du site d'atterisage.
+On commence a une altitude de $15,2$ km avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694,6\ \si{m.s^{-1}}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
+verticale négligeable. On se situe environ $480$ km (à vol d'oiseau) du site d'atterisage.
 \\
 Cette phase a comme but de ralentir majoritairement la vitesse horizontale, 
 mais en ralentissant, la gravité commence à avoir plus d'emprise 
 et la vitesse est trop basse pour pouvoir `dépasser' la Lune (cf. \href{https://fr.wikipedia.org/wiki/Canon_de_Newton}{Le Canon de Newton})
 
 \subsubsection{- Phase de Repérage}
-Une fois qu'on atteint environ $2,95\ km$ d'altitude (on situe maintenant à $10\ km$ du site d'atterissage à vol d'oiseau), il faut être au alentours de $150\ m \cdot s^{-1}$
-horizontalement, et $45\ m \cdot s^{-1}$ verticale, ce qui donne une vitesse totale de $156,6\ m \cdot s^{-1}$.
+Une fois qu'on atteint environ $2,95$ km d'altitude (on situe maintenant à $10$ km du site d'atterissage à vol d'oiseau), il faut être au alentours de $150\ \si{m.s^{-1}}$
+horizontalement, et $45\ \si{m.s^{-1}}$ verticale, ce qui donne une vitesse totale de $156,6\ \si{m.s^{-1}}$.
 \\
 Cette phase a comme but de finir de ralentir la vitesse horizontale, mais aussi d'eviter une trop
 forte accéleration vers le corps céleste. Elle sert aussi de trouver le lieu d'atterissage, notamment pendant
@@ -144,8 +153,8 @@ la mission d'Apollo 11, Neil Armstrong a du survoler le lieu d'atterissage prév
 champ de rochers.
 
 \subsubsection{- Phase d'atterissage}
-En arrivant a $150\ m$ d'altitude et  jusqu'à $600\ m$ de distance horizontale du  
-site d'atterisage, il faut $20-0\ m \cdot s^{-1}$ de vitesse horizontale et $8-1\ m \cdot s^{-1}$ verticalement.
+En arrivant a $150$ m d'altitude et  jusqu'à $600$ m de distance horizontale du  
+site d'atterisage, il faut $20-0\ \si{m.s^-1}$ de vitesse horizontale et $8-1\ \si{m.s^{-1}}$ verticalement.
 \\
 Comme règle générale, il faut que la vitesse verticale soit un dixième de l'altitude, sauf les derniers mètres ou il faut
 s'assurer un atterisage qui n'endommage des parties importantes tel que le moteur de remonté, les expériences et evidemment les
@@ -174,13 +183,13 @@ continuité et l'evolution des vecteurs en les approximants en valeurs discretes
 \\
 Pour Unity le programme qu'on a utilisé pour la simulation, la valeur de temps entre chaque 'update' est de $\frac{1}{50}$ de seconde. 
 \\
-On calcule l'acceleration et on 'ajoute' ce vecteur a celui de la vitesse. Cela est comme faire: $v_{\text{future}} = v_{\text{courante}} + \Delta v$, cette action est répété
+On calcule l'acceleration et on `ajoute' ce vecteur a celui de la vitesse. Cela est comme faire: $v_{\text{future}} = v_{\text{courante}} + \Delta v$, cette action est répété
 toute les $50^{\text{ième}}$ de seconde. On peut donc assimiler ajouter l'acceleration au vecteur vitesse comme ajoutant le $\Delta v$, 
-les unités de l'acceleration en $m \cdot s^{-2}$ multiplié par des $s$ donne des $m \cdot s^{-1}$. En ajoutant le vecteur acceleration toute les $50^{\text{ième}}$ de seconde, 
+les unités de l'acceleration en $\si{m.s^{-2}}$ multiplié par des $\si{s}$ donne des $\si{m.s^{-1}}$. En ajoutant le vecteur acceleration toute les $50^{\text{ième}}$ de seconde, 
 on calcule le nouveau vecteur vitesse. 
 \\
 Similairement, pour la position, on prends la vitesse et on calcul la nouvelle position apres que la fusée
-ait bougée pendant $\frac{1}{50}\ s$.
+ait bougée pendant $\frac{1}{50}\ \si{s}$.
 
 \subsection{- Evolution de l'acceleration}
 Le moteur d'une fusée à un pourcentage de la 'puissance' maximale fourni une force
@@ -197,9 +206,9 @@ Cela a pour consequence que la fusée a une augmentation d'acceleration au fur e
 Dans une orbite circulaire uniforme, il y a seul la force de gravité qui agit sur la fusée.
 On a:
 \[ \overrightarrow{F} = \frac{GMm}{r^2}\overrightarrow{n} \Leftrightarrow \overrightarrow{a} = \frac{GM}{r^2}\overrightarrow{n}\]
-Avec $G\text{ : la constante gravitationelle en } m^3 \cdot kg^{-1} \cdot s^{-2}\text{, } M \text{ : la masse de la Lune en } kg \text{, } 
+Avec $G\text{ : la constante gravitationelle en } \si{m^{3}.kg^{-1}.s^{-2}}\text{, } M \text{ : la masse de la Lune en } \si{kg} \text{, } 
 \\ m \text{ : la masse de la fusée, } r \text{ : le rayon de l'orbite (} 
-R_{\text{Lune}}\ +\ d_{\text{hauteur}} \text{), } \overrightarrow{n} \text{ : le vecteur unitaire} \\ \text{qui pointe vers le centre d'inertie de la Lune.}$
+R_{\text{Lune}}\ +\ d_{\text{hauteur}} \text{en} \si{m}  \text{), } \overrightarrow{n} \text{ : le vecteur unitaire} \\ \text{qui pointe vers le centre d'inertie de la Lune.}$
 \\
 De plus on est dans un mouvement circulaire donc: $\overrightarrow{a} = \frac{v^2}{r}\overrightarrow{n}$
 \\
@@ -231,7 +240,8 @@ Avec la direction de la vitesse étant tangantielle à la trajectoire circulaire
         \draw (4.5, -1) -- (4.5,1) -- (11.6+\arrowLength,1) -- (11.6 + \arrowLength, -1) -- (4.5,-1);
     \end{tikzpicture}
     \\
-    \emph{Figure 1 - Vecteurs Vitesses et Accelerations dans une Orbite Circulaire}
+    \vspace{5mm}
+    \emph{Figure 3 - Vecteurs Vitesses et Accelerations dans une Orbite Circulaire}
 \end{center}
 
 
