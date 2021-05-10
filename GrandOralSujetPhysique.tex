@@ -1,6 +1,14 @@
 \documentclass[a4paper, 12pt]{scrartcl}
 
 \usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    urlcolor = blue!60!black,
+    linkcolor = black
+}
 \usepackage{tikz}
 \usetikzlibrary{shapes.misc, calc}
 %\usepackage{showframe}
@@ -20,6 +28,26 @@
 
 
 
+\subsection{- Introduction}
+Après les multiples victoires technologiques de l'URSS dans la course des étoiles, premièrement
+le satellite de Spoutnik 1 en 1957 choque le monde ainsi que Laika, ensuite avec Yuri Gagarin, premier homme dans l'espace ; 
+les victoires consécutives tel que la premiere sortie extravéhiculaire. 
+\\
+\\
+Le Président Kennedy annonca la participation des Etats-Unis de cette compétition spatiale en 
+Septembre 1962 qui promet de mettre un homme sur la Lune avant la fin de la décennie. 
+Le 16 Juillet 1969, Apollo 11, contenant les astronautes Neil Armstrong, Edwin ``Buzz'' Aldrin et Michael Collins
+part de la Terre, l'orbite plusieurs fois et puis envoie une petite navette contenant ces trois astronautes vers la Lune.
+En arrivant dans la sphère d'influence (région de l'espace ou un certain corps céleste est la force dominante) de la Lune trois jours plus tard, la vitesse est bien trop grande et le vaisseau n'orbite pas la Lune, il faut effectuer un premier ajustement 
+pour permettre aux astronautes de se situer à une orbite de $111\ km$ au dessus de la surface lunaire.
+\\
+\\
+On a construit une simulation qui cherche à mieux comprendre comment l'atterissage sur la Lune
+s'est produite, cette mission a été choisie grâce à sa signification historique et les
+données importantes récoltées. 
+
+
+
 \section{- Etapes de l'Atterissage}
 \subsection{- Parametres initiaux : Orbite Circulaire}
 Nous cherchons à modeliser la mission de Apollo 11 du 20-21 Juillet 1969 comme exemple d'atterissage
@@ -29,13 +57,20 @@ historique.
 Il y a deux capsules en orbite a $111\ km$ d'altitude au-dessus de la surface de la Lune. La \emph{Command and Service Module} - CSM,
 partie qui reste en orbite avec l'astronaut Michael Collins, et le \emph{Lunar Module} - LM, avec Neil Armstrong et Edwin `Buzz' Aldrin.
 En sachant que les deux parties attachés sont en orbite circulaire a une altitude de $111\ km$ on peut calculer
-la vitesse initiale $\| \overrightarrow{v} \| = 1628.9\ m\cdot s^{-1}$. 
+la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ m\cdot s^{-1}$. 
+
+\begin{center}
+\includegraphics[width=300pt]{CSM+LM_Schema}
+\\
+\vspace{5mm}
+\emph{Figure 1 - Schéma du CSM et LM}
+\end{center}
 
 \subsection{- Transfer de Hohmann : Ellipse Intermédiaire}
-On sépare ensuite les deux modules et on assure une séparation de au moins $10\ m$ puis on pointe
-le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,6\ m\cdot s^{-1}$ 
-ce qui met la fusée en une orbite elliptique avec un aposélene à la location du changement (à $111\ km$) et
-avec un perisélene à 180° et une altitude de $15,2\ km$. 
+On sépare ensuite les deux modules et on assure une distance d'au moins $10\ m$ entre eux, puis on pointe
+le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ m\cdot s^{-1}$ 
+ce qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111\ km$) et
+avec un perisélene (point où l'altitude est minimale) à 180° de rotation autour du corps céleste et une altitude de $15,2\ km$. 
 \\
 \begin{center}
 \begin{tikzpicture}
@@ -79,23 +114,46 @@ avec un perisélene à 180° et une altitude de $15,2\ km$.
 
 \end{tikzpicture}
 \\
-\vspace{15mm}
+\vspace{5mm}
 \emph{Figure 1 - Transfer de Hohmann (partiel) pour approcher la Lune}
 \end{center}
 \vspace{5mm}
-Normalement, en arrivant à l'aposélene, on effectue une rotation pour pouvoir ralentir de nouveau le vaisseau.
-Mais nous voulons pas circulariser l'orbite à celle de l'aposélene, mais plutot atterrir.
+Normalement, en arrivant au périsélene, on effectue une rotation pour pouvoir ralentir de nouveau le vaisseau
+et circulariser l'orbite (pour que l'eccentricité soit de 0 et de garder l'altitude du périsélene).
 
-\subsection{- Phase de Descente}
+\subsection{- Phases de Descente}
+La phase de déscente est plus dur à modeliser car elle varie dépendant des circonstances, peut changer a tout moment,
+et surtout n'a pas de bonnes equations pour modeliser la vitesse mais plutôt des lignes directrices à suivre - 
+il ne faut pas oublier que seuls les meilleurs pilotes pouvaient devenir astronautes et donc leur capacité surpasser de loins
+les ordinateurs de l'époque.
 \subsubsection{- Phase de Freinage}
-On commence a une altitude de $15.2\ km$ avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694.6\ m \cdot s^{-1}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
-verticale négligeable. 
+On commence a une altitude de $15,2\ km$ avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694,6\ m \cdot s^{-1}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
+verticale négligeable. On se situe environ $480\ km$ (à vol d'oiseau) du site d'atterisage.
 \\
-Cette phase a comme but de ralentir majoritairement la vitesse horizontale, en en ralentissant
+Cette phase a comme but de ralentir majoritairement la vitesse horizontale, 
+mais en ralentissant, la gravité commence à avoir plus d'emprise 
+et la vitesse est trop basse pour pouvoir `dépasser' la Lune (cf. \href{https://fr.wikipedia.org/wiki/Canon_de_Newton}{Le Canon de Newton})
+
+\subsubsection{- Phase de Repérage}
+Une fois qu'on atteint environ $2,95\ km$ d'altitude (on situe maintenant à $10\ km$ du site d'atterissage à vol d'oiseau), il faut être au alentours de $150\ m \cdot s^{-1}$
+horizontalement, et $45\ m \cdot s^{-1}$ verticale, ce qui donne une vitesse totale de $156,6\ m \cdot s^{-1}$.
+\\
+Cette phase a comme but de finir de ralentir la vitesse horizontale, mais aussi d'eviter une trop
+forte accéleration vers le corps céleste. Elle sert aussi de trouver le lieu d'atterissage, notamment pendant
+la mission d'Apollo 11, Neil Armstrong a du survoler le lieu d'atterissage prévu à cause d'un
+champ de rochers.
+
+\subsubsection{- Phase d'atterissage}
+En arrivant a $150\ m$ d'altitude et  jusqu'à $600\ m$ de distance horizontale du  
+site d'atterisage, il faut $20-0\ m \cdot s^{-1}$ de vitesse horizontale et $8-1\ m \cdot s^{-1}$ verticalement.
+\\
+Comme règle générale, il faut que la vitesse verticale soit un dixième de l'altitude, sauf les derniers mètres ou il faut
+s'assurer un atterisage qui n'endommage des parties importantes tel que le moteur de remonté, les expériences et evidemment les
+astronautes. 
 
 
 
-
+\newpage
 \section{- La méchanique dans le modèle}
 \subsection{- Implementation de la position, vitesse et acceleration}
 \subsubsection{- Relations physique}
