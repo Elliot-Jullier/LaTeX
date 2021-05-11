@@ -52,7 +52,7 @@ s'est produite, cette mission a été choisie grâce à sa signification histori
 données importantes récoltées. 
 
 
-
+% Add references when values are calculated to the appropriate formula in part 2
 \section{- Etapes de l'Atterissage}
 \subsection{- Parametres initiaux : Orbite Circulaire}
 Nous cherchons à modeliser la mission de Apollo 11 du 20-21 Juillet 1969 comme exemple d'atterissage
@@ -76,7 +76,7 @@ la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ \si{m.s^{-1}}$.
 \subsection{- Transfer de Hohmann : Ellipse Intermédiaire}
 On sépare ensuite les deux modules et on assure une distance d'au moins $10$ m entre eux, puis on pointe
 le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ \si{m.s^{-1}}$
-ce qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111$ km) et
+appelé injection trans-lunaire, qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111$ km) et
 avec un perisélene (point où l'altitude est minimale) à 180° de rotation autour du corps céleste et une altitude de $15,2$ km. 
 \\
 \begin{center}
@@ -87,7 +87,7 @@ avec un perisélene (point où l'altitude est minimale) à 180° de rotation aut
     \fill[black!30] (0,0) circle (0.2 * \largeRadius); 
     % Center point
     \draw [ultra thick] (-0.05*\largeRadius,-0.05*\largeRadius) -- (0.05*\largeRadius,0.05*\largeRadius);  
-    \draw [ultra thick] (-0.05*\largeRadius, 0.05*\largeRadius) -- (0.05*\largeRadius,-0.05*\largeRadius);  
+    \draw [ultra thick] (-0.05*\largeRadius, 0.05*\largeRadius) -- (0.05*\largeRadius,-0.05*\largeRadius);
     \node at (0.12*\largeRadius,-0.06*\largeRadius) {O}; 
     % Primary Orbit
     \draw[thick] (0,0) circle (\largeRadius); 
@@ -125,7 +125,7 @@ avec un perisélene (point où l'altitude est minimale) à 180° de rotation aut
 \emph{Figure 2 - Transfer de Hohmann (partiel) pour approcher la Lune}
 \end{center}
 \vspace{5mm}
-\indent
+
 Normalement, en arrivant au périsélene, on effectue une rotation pour pouvoir ralentir de nouveau le vaisseau
 et circulariser l'orbite (pour que l'eccentricité soit de 0 et de garder l'altitude du périsélene).
 
@@ -138,7 +138,7 @@ les ordinateurs de l'époque.
 \subsubsection{- Phase de Freinage}
 On commence a une altitude de $15,2$ km avec une vitesse de $\overrightarrow{v_{\text{P}}} = 1694,6\ \si{m.s^{-1}}$ qui est entierement horizontale (seulement au périsélene) et qui a une vitesse 
 verticale négligeable. On se situe environ $480$ km (à vol d'oiseau) du site d'atterisage.
-\\
+\\ \\ \indent
 Cette phase a comme but de ralentir majoritairement la vitesse horizontale, 
 mais en ralentissant, la gravité commence à avoir plus d'emprise 
 et la vitesse est trop basse pour pouvoir `dépasser' la Lune (cf. \href{https://fr.wikipedia.org/wiki/Canon_de_Newton}{Le Canon de Newton})
@@ -146,7 +146,7 @@ et la vitesse est trop basse pour pouvoir `dépasser' la Lune (cf. \href{https:/
 \subsubsection{- Phase de Repérage}
 Une fois qu'on atteint environ $2,95$ km d'altitude (on situe maintenant à $10$ km du site d'atterissage à vol d'oiseau), il faut être au alentours de $150\ \si{m.s^{-1}}$
 horizontalement, et $45\ \si{m.s^{-1}}$ verticale, ce qui donne une vitesse totale de $156,6\ \si{m.s^{-1}}$.
-\\
+\\ \\ \indent
 Cette phase a comme but de finir de ralentir la vitesse horizontale, mais aussi d'eviter une trop
 forte accéleration vers le corps céleste. Elle sert aussi de trouver le lieu d'atterissage, notamment pendant
 la mission d'Apollo 11, Neil Armstrong a du survoler le lieu d'atterissage prévu à cause d'un
@@ -180,14 +180,14 @@ de position, vitesse et acceleration:
 \subsubsection{- Implementation par approximation}
 La manière dont on a implémenté cette relation dans le programme est d'approximer la 
 continuité et l'evolution des vecteurs en les approximants en valeurs discretes. 
-\\
+\\ \\ \indent
 Pour Unity le programme qu'on a utilisé pour la simulation, la valeur de temps entre chaque 'update' est de $\frac{1}{50}$ de seconde. 
-\\
+\\ \\ \indent
 On calcule l'acceleration et on `ajoute' ce vecteur a celui de la vitesse. Cela est comme faire: $v_{\text{future}} = v_{\text{courante}} + \Delta v$, cette action est répété
 toute les $50^{\text{ième}}$ de seconde. On peut donc assimiler ajouter l'acceleration au vecteur vitesse comme ajoutant le $\Delta v$, 
 les unités de l'acceleration en $\si{m.s^{-2}}$ multiplié par des $\si{s}$ donne des $\si{m.s^{-1}}$. En ajoutant le vecteur acceleration toute les $50^{\text{ième}}$ de seconde, 
 on calcule le nouveau vecteur vitesse. 
-\\
+\\ \\ \indent 
 Similairement, pour la position, on prends la vitesse et on calcul la nouvelle position apres que la fusée
 ait bougée pendant $\frac{1}{50}\ \si{s}$.
 
@@ -197,7 +197,8 @@ constante.
 \\
 De plus:
 \[F = ma \]
-Par ailleur, le moteur d'une fusée brule la masse d'essence proportionellement a la 'puissance' fournie.
+\indent
+Par ailleur, le moteur d'une fusée brule la masse d'essence proportionellement a la `puissance' fournie.
 Cela a pour consequence que la fusée a une augmentation d'acceleration au fur et 
 à mesure qu'elle utilise son carburant. 
 
@@ -209,7 +210,7 @@ On a:
 Avec $G\text{ : la constante gravitationelle en } \si{m^{3}.kg^{-1}.s^{-2}}\text{, } M \text{ : la masse de la Lune en } \si{kg} \text{, } 
 \\ m \text{ : la masse de la fusée, } r \text{ : le rayon de l'orbite (} 
 R_{\text{Lune}}\ +\ d_{\text{hauteur}} \text{en} \si{m}  \text{), } \overrightarrow{n} \text{ : le vecteur unitaire} \\ \text{qui pointe vers le centre d'inertie de la Lune.}$
-\\
+\\ \\ 
 De plus on est dans un mouvement circulaire donc: $\overrightarrow{a} = \frac{v^2}{r}\overrightarrow{n}$
 \\
 Ce qui donne:
@@ -243,6 +244,52 @@ Avec la direction de la vitesse étant tangantielle à la trajectoire circulaire
     \vspace{5mm}
     \emph{Figure 3 - Vecteurs Vitesses et Accelerations dans une Orbite Circulaire}
 \end{center}
+\subsubsection{- Orbite Intermediaire d'Hohmann}
+Pendant que la fusée est en orbite circulaire, la vitesse $\overrightarrow{v_{c1}}$ reste constante. La vitesse à l'aposélene pour l'orbite elliptique n'est pas la meme que pour 
+l'orbite circulaire, on la nomme $\overrightarrow{v_\alpha}$. 
+\\
+On a donc:
+\[ \overrightarrow{v_{c1}} = \overrightarrow{v_\alpha} + \overrightarrow{\Delta v_{\alpha}}\]
+et donc, si l'on connait la vitesse qu'il faut avoir pour l'orbite elliptique, on peut calculer $\overrightarrow{\Delta v_{\alpha}} = \overrightarrow{v_{c1}} - \overrightarrow{v_\alpha}$.
+\\ \\ 
+On peut calculer la vitesse d'un objet en orbite en sachant la demi-longueur du grand axe et la distance entre le corps céleste et le corps qui orbite en utilisant
+l'équation vis-viva:
+\[ v^2 = GM(\frac{2}{r_1}-\frac{1}{a}) = 2\mu (\frac{1}{r_1}-\frac{1}{r_1+r_2}) \]
+Avec: $v \text{ en } \si{m.s^{-1}}$, $ GM = \mu$, $r$ la distance entre les centres d'interties du corp céleste et du corp orbitant en $\si{m}$ et $a = \frac{1}{2}\ r_1+r_2 \text{ en } \si{m}$.
+\\
+
+Dans le cas de l'orbite d'Hohmann $r_1$ est l'altitude du aposélene en m (sans oublier le rayon du corps céleste) et $r_2$ la distance du périsélene en m (sans oublier le rayon du corps céleste).
+
+\paragraph{Preuve pour orbites elliptiques (et circulaires): \\}
+On part de la formule d'énergie specifique orbitale qui reste constante pendant toute l'orbite. On note $\alpha$ l'aposélene, $\pi$ le périsélene.
+\\
+\\
+\[\epsilon = \frac{v_\alpha^2}{2} - \frac{GM}{r_\alpha} = \frac{v_\pi^2}{2} - \frac{GM}{r_\pi} \Leftrightarrow \frac{v_\alpha^2}{2}-\frac{v_\pi^2}{2} = \frac{GM}{r_\alpha} - \frac{GM}{r_\pi}\]
+\\
+
+Dans une orbite elliptique, le vecteur vitesse et le vecteur position (avec l'origine étant le centre d'inertie du corps céleste) sont orthogonaux au périsélene et l'aposélene.
+Donc la conservation du moment cinétique nécessite la conservation du moment cinetique spécifique (par unité du masse) implique $h = r_p\pi h_\pi = r_\alpha h_\alpha = \text{constante}$
+ce qui implique que $v_\pi = \frac{r_\alpha}{v_\pi}v_\alpha$
+
+\[
+\begin{aligned}
+\frac{v_\alpha^2}{2}-\frac{v_\pi^2}{2} = \frac{GM}{r_\alpha} - \frac{GM}{r_\pi} &\Leftrightarrow \frac{1}{2}\left( 1-\frac{r_\alpha^2}{r_\pi^2} \right) v_\alpha^2 = \frac{GM}{r_\alpha}-\frac{GM}{r_\pi} \\
+&\Leftrightarrow \frac{1}{2} \left( \frac{r_\pi^2-r_\alpha^2}{r_\pi^2} \right) v_\alpha^2 = \frac{GM}{r_\alpha} - \frac{GM}{r_\pi} \\
+&\Leftrightarrow \frac{1}{2} v_\alpha^2 = \left( \frac{GM}{r_\alpha} - \frac{GM}{r_\pi} \right) \cdot \frac{r_\pi^2}{r_\pi^2-r_\pi^2} \\
+&\Leftrightarrow \frac{1}{2} v_\alpha^2 = GM \left( \frac{r_\pi-r_\alpha}{r_\alpha r_\pi} \right) \frac{r_\pi^2}{r_\pi^2 - r_\alpha^2} \\
+&\Leftrightarrow \frac{1}{2} v_\alpha^2 = \frac{r_\pi}{r_\alpha(r_\pi - r_\alpha)}
+\end{aligned}
+\]
+De plus $2a = r_\alpha + r_\pi$ avec $a$ la demi-longueur du grand axe. 
+\\
+Donc:
+\[ \frac{1}{2}v_\alpha^2 = GM\frac{2a - r_\alpha}{r_\alpha(2a)} = GM \left(\frac{1}{r_\alpha} - \frac{1}{2a}\right) = \frac{GM}{r_\alpha} - \frac{GM}{2a} \]
+En remplaceant dans l'équation originale:
+\[ \epsilon  = \frac{v^2}{2} - \frac{GM}{r} = \frac{v_\pi^2}{2} - \frac{GM}{r_\pi} = \frac{v_\alpha^2}{2} - \frac{GM}{r_\alpha} = -\frac{GM}{2a} \]
+\[\Leftrightarrow  \frac{v^2}{2} -\frac{GM}{r} = - \frac{GM}{2a} \Leftrightarrow v^2 = GM \left( \frac{2}{r} - \frac{1}{a} \right) \]
+
+
+
 
 
 
