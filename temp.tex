@@ -1,12 +1,14 @@
 \documentclass{article}
-
-\usepackage{mathtools}
-
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
 \begin{document}
-\noindent
-\[A(x_1;y_1;z_1)\text{ and } B(x_2;y_2;z_2)\] 
-\[d = \sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}\]
-\vspace{5mm}
-\[\vec{u} \begin{pmatrix} x \\ y \\ z \end{pmatrix}\]
-\[ ||\vec{u}|| = \sqrt{x^2+y^2+z^2}\]
+\begin{itemize}
+\item[\tikzmark{bl}\textbullet] Something\tikzmark{br}
+\item Something not boxed
+\item Also not boxed.
+\end{itemize}
+\tikz[overlay,remember picture]{\draw[red]
+  ($(bl)+(-0.2em,0.9em)$) rectangle
+  ($(br)+(0.2em,-0.3em)$);}
 \end{document}

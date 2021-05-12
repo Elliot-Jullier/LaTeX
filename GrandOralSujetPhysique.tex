@@ -75,8 +75,8 @@ la vitesse initiale $\| \overrightarrow{v} \| = 1628,9\ \si{m.s^{-1}}$.
 
 \subsection{- Transfer de Hohmann : Ellipse Intermédiaire}
 On sépare ensuite les deux modules et on assure une distance d'au moins $10$ m entre eux, puis on pointe
-le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ \si{m.s^{-1}}$
-appelé injection trans-lunaire, qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111$ km) et
+le moteur de la LM dans la direction du vecteur vitesse mais dans le sens opposé. On effectue un changement $\Delta \overrightarrow{v} = -21,81\ \si{m.s^{-1}}$, 
+qui met la fusée en une orbite elliptique avec un aposélene (point où l'altitude est maximale) à la location du changement (à $111$ km) et
 avec un perisélene (point où l'altitude est minimale) à 180° de rotation autour du corps céleste et une altitude de $15,2$ km. 
 \\
 \begin{center}
@@ -209,7 +209,7 @@ On a:
 \[ \overrightarrow{F} = \frac{GMm}{r^2}\overrightarrow{n} \Leftrightarrow \overrightarrow{a} = \frac{GM}{r^2}\overrightarrow{n}\]
 Avec $G\text{ : la constante gravitationelle en } \si{m^{3}.kg^{-1}.s^{-2}}\text{, } M \text{ : la masse de la Lune en } \si{kg} \text{, } 
 \\ m \text{ : la masse de la fusée, } r \text{ : le rayon de l'orbite (} 
-R_{\text{Lune}}\ +\ d_{\text{hauteur}} \text{en} \si{m}  \text{), } \overrightarrow{n} \text{ : le vecteur unitaire} \\ \text{qui pointe vers le centre d'inertie de la Lune.}$
+R_{\text{Lune}}\ +\ d_{\text{hauteur}} \text{ en } \si{m}  \text{), } \overrightarrow{n} \text{ : le vecteur unitaire} \\ \text{qui pointe vers le centre d'inertie de la Lune.}$
 \\ \\ 
 De plus on est dans un mouvement circulaire donc: $\overrightarrow{a} = \frac{v^2}{r}\overrightarrow{n}$
 \\
@@ -264,10 +264,12 @@ Dans le cas de l'orbite d'Hohmann $r_1$ est l'altitude du aposélene en m (sans 
 On part de la formule d'énergie specifique orbitale qui reste constante pendant toute l'orbite. On note $\alpha$ l'aposélene, $\pi$ le périsélene.
 \\
 \\
+% Add the one at no point then a la ligne say particulierement a l'aposelene et periselene then use alpha and pi, en rearrangeant on trouve and then after the equivalence
 \[\epsilon = \frac{v_\alpha^2}{2} - \frac{GM}{r_\alpha} = \frac{v_\pi^2}{2} - \frac{GM}{r_\pi} \Leftrightarrow \frac{v_\alpha^2}{2}-\frac{v_\pi^2}{2} = \frac{GM}{r_\alpha} - \frac{GM}{r_\pi}\]
 \\
 
 Dans une orbite elliptique, le vecteur vitesse et le vecteur position (avec l'origine étant le centre d'inertie du corps céleste) sont orthogonaux au périsélene et l'aposélene.
+%Insert TikZ to show this visually
 Donc la conservation du moment cinétique nécessite la conservation du moment cinetique spécifique (par unité du masse) implique $h = r_p\pi h_\pi = r_\alpha h_\alpha = \text{constante}$
 ce qui implique que $v_\pi = \frac{r_\alpha}{v_\pi}v_\alpha$
 
