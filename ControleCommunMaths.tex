@@ -9,12 +9,14 @@
 
 % Maths
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{nccmath}
 \usepackage{siunitx}
 \usepackage{tikz}
 \usetikzlibrary{shapes, calc, positioning, arrows.meta}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
+\usepackage{tkz-tab}
 
 % Misc
 \usepackage{hyperref}
@@ -24,6 +26,9 @@
     linkcolor = black
 }
 \usepackage{dsfont}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[export]{adjustbox}
 
 %\usepackage{showframe}
 
@@ -36,9 +41,10 @@
 
 % Setup
 \title{Correction du Contrôle Commun de Terminale Spécialités Mathématiques}
-\author{Elliot Jullier}
+\author{Elliot Jullier, T$^\circ$6}
 \date{Mai 2021}
 \maketitle
+\thispagestyle{empty}
 \newpage
 \pagenumbering{arabic}
 % End Setup
@@ -54,7 +60,7 @@
 \subsection*{Question 1 :}
 \noindent
 On considère les droites $(d)$ et $(d')$ dont les représentations paramétriques respectives sont:  
-$ \begin{cases} x = -6t + 4 \\ y = -8t - 1 \\ z = 6t - 22 \end{cases} $, $t \in \mathds{R} $ et $ \begin{cases} x = 3s + 1 \\ y = 4s \\ z = -s + 3 \end{cases} $, $s \in \mathds{R}$
+$ \begin{cases} x = -6t + 4 \\ y = -8t - 1 \\ z = 6t - 22 \end{cases} $, $t \in \mathbb{R} $ et $ \begin{cases} x = 3s + 1 \\ y = 4s \\ z = -s + 3 \end{cases} $, $s \in \mathbb{R}$
 \\ \\ \noindent
 Ces deux droites sont :
 \vspace{2mm}
@@ -85,9 +91,9 @@ Ce qui est vrai donc les vecteurs directeurs sont colinéaires et donc les droit
 Il nous reste à déterminer si elles sont confondues ou strictement parallèles.
 \\
 On cherche donc à savoir si un point sur la droite $(d)$ appartient à la droite $(d')$. Un point appartenant à $(d)$ satisfait : 
-$ \begin{cases} x = -6t + 4 \\ y = -8t - 1 \\ z = 6t - 22 \end{cases}$, $t \in \mathds{R}$. 
+$ \begin{cases} x = -6t + 4 \\ y = -8t - 1 \\ z = 6t - 22 \end{cases}$, $t \in \mathbb{R}$. 
 \\ \\
-Si on prends $t = 0$, on a $\begin{cases} x = -6 \times 0 + 4 \\ y = -8 \times 0 - 1 \\ z = 6 \times 0 -22 \end{cases}$ 
+Si on prend $t = 0$, on a $\begin{cases} x = -6 \times 0 + 4 \\ y = -8 \times 0 - 1 \\ z = 6 \times 0 -22 \end{cases}$ 
 \\ \\ 
 Ce qui donne les coordonnées $A(4; -1; -22)$ 
 \\
@@ -102,13 +108,13 @@ Ce qui est impossible donc $(d)$ et $(d')$ ne sont pas confondues, ainsi il rest
 \addcontentsline{toc}{subsection}{Question 2}
 \subsection*{Question 2 :}
 \noindent
-On considère le plan $(\mathcal{P})$ dont une equation cartesienne est: $ - x + y + z - 4 = 0 $. Ce plan est parallèle à la droite $(d)$ dont une représentation paramétrique est :
+On considère le plan $(\mathcal{P})$ dont une equation cartésienne est: $ - x + y + z - 4 = 0 $. Ce plan est parallèle à la droite $(d)$ dont une représentation paramétrique est :
 \vspace{2mm}
 \begin{itemize}
-    \item[a)] $ \begin{cases} x = 5t + 1 \\ y = 3t \\ z = 4 \end{cases} $, $t \in \mathds{R}$
-    \item[\tikzmark{bl}b)] $ \begin{cases} x = -5t + 12 \\ y = 3t \\ z = -8t \end{cases} $, $t \in \mathds{R}$ \tikzmark{br}
-    \item[c)] $ \begin{cases} x = -5t - 3 \\ y = -3t \\ z = 8t \end{cases} $, $t \in \mathds{R}$
-    \item[d)] $ \begin{cases} x = -t + 2 \\ y = t + 3 \\ z = t - 1 \end{cases} $, $t \in \mathds{R}$
+    \item[a)] $ \begin{cases} x = 5t + 1 \\ y = 3t \\ z = 4 \end{cases} $, $t \in \mathbb{R}$
+    \item[\tikzmark{bl}b)] $ \begin{cases} x = -5t + 12 \\ y = 3t \\ z = -8t \end{cases} $, $t \in \mathbb{R}$ \tikzmark{br}
+    \item[c)] $ \begin{cases} x = -5t - 3 \\ y = -3t \\ z = 8t \end{cases} $, $t \in \mathbb{R}$
+    \item[d)] $ \begin{cases} x = -t + 2 \\ y = t + 3 \\ z = t - 1 \end{cases} $, $t \in \mathbb{R}$
 \end{itemize}
 \tikz[overlay,remember picture]{\draw[black]
     ($(bl)+(-0.2em, 2.5em)$) rectangle
@@ -119,27 +125,28 @@ On considère le plan $(\mathcal{P})$ dont une equation cartesienne est: $ - x +
 \underline{Justification :}
 \\
 Un vecteur normal du plan $(\mathcal{P})$ d'équation cartésienne $ - x + y + z - 4 = 0$ est $\vec{n}\begin{pmatrix}-1 \\ 1 \\ 1\end{pmatrix}$.
+\\
 Tout vecteur appartenant au plan est orthogonal au vecteur normal, ainsi tout vecteur parallèle au plan est aussi orthogonal au vecteur normal de ce même plan.
 De plus, deux vecteurs orthogonaux ont un produit scalaire égal à 0.
 \\
-On fait la liste d'un vecteur directeur possible pour la droite $(d)$ d'après la représentation paramétrique proposé. 
+On fait la liste d'un vecteur directeur possible pour la droite $(d)$ d'après la représentation paramétrique proposée. 
 \begin{itemize}
-    \item[a)] $\begin{cases} x = 5t + 1 \\ y = 3t \\ z = 4 \end{cases}$, $t \in \mathds{R}$ a pour vecteur directeur $\vec{d_1}\begin{pmatrix} 5 \\ 3 \\ 0 \end{pmatrix}$ \\ \\ 
-        $\vec{n}.\vec{d_1} = -1 \times 5 + 1 \times 3 + 1 \times 0 = -2 \neq 0$ \\ 
+    \item[a)] $\begin{cases} x = 5t + 1 \\ y = 3t \\ z = 4 \end{cases}$, $t \in \mathbb{R}$ a pour vecteur directeur $\vec{d_1}\begin{pmatrix} 5 \\ 3 \\ 0 \end{pmatrix}$ \\ \\ 
+        $\vec{n}\ .\ \vec{d_1} = -1 \times 5 + 1 \times 3 + 1 \times 0 = -2 \neq 0$ \\ 
         Donc cette droite n'est pas parallèle avec $(\mathcal{P})$ \\ \\
 
-    \item[b)] $\begin{cases} x = -5t +12 \\ y = 3t \\ z = -8t \end{cases}$, $t \in \mathds{R}$ a pour vecteur directeur $\vec{d_2}\begin{pmatrix} -5 \\ 3 \\ -8 \end{pmatrix}$ \\ \\ 
-        $\vec{n}.\vec{d_2} = -1 \times (-5) + 1 \times 3 + 1 \times (-8) = 0$ \\ 
+    \item[b)] $\begin{cases} x = -5t +12 \\ y = 3t \\ z = -8t \end{cases}$, $t \in \mathbb{R}$ a pour vecteur directeur $\vec{d_2}\begin{pmatrix} -5 \\ 3 \\ -8 \end{pmatrix}$ \\ \\ 
+        $\vec{n}\ .\ \vec{d_2} = -1 \times (-5) + 1 \times 3 + 1 \times (-8) = 0$ \\ 
         Donc cette droite est parallèle avec $(\mathcal{P})$ \\ \\
 
-    \item[c)] $\begin{cases} x = -5t - 3 \\ y = -3t \\ z = 8t \end{cases}$, $t \in \mathds{R}$ a pour vecteur directeur $\vec{d_3}\begin{pmatrix} -5 \\ -3 \\ 8 \end{pmatrix}$ \\ \\ 
-        $\vec{n}.\vec{d_3} = -1 \times (-5) + 1 \times (-3) + 1 \times 8 = 10 \neq 0$ \\ 
+    \item[c)] $\begin{cases} x = -5t - 3 \\ y = -3t \\ z = 8t \end{cases}$, $t \in \mathbb{R}$ a pour vecteur directeur $\vec{d_3}\begin{pmatrix} -5 \\ -3 \\ 8 \end{pmatrix}$ \\ \\ 
+        $\vec{n}\ .\ \vec{d_3} = -1 \times (-5) + 1 \times (-3) + 1 \times 8 = 10 \neq 0$ \\ 
         Donc cette droite n'est pas parallèle avec $(\mathcal{P})$\\ \\
 
-    \item[d)] $\begin{cases} x = -t + 2 \\ y = t + 3 \\ z = t - 1 \end{cases}$, $t \in \mathds{R}$ a pour vecteur directeur $\vec{d_4}\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ \\ \\ 
+    \item[d)] $\begin{cases} x = -t + 2 \\ y = t + 3 \\ z = t - 1 \end{cases}$, $t \in \mathbb{R}$ a pour vecteur directeur $\vec{d_4}\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ \\ \\ 
     Le vecteur directeur de cette droite est colinéaire avec le vecteur normal du plan, ainsi cette droite est orthogonale au plan et donc ne peut être parallèle à $(\mathcal{P})$\\ 
 \end{itemize}
-Donc il y a que la deuxième droite dont une représentation paramétrique est $\begin{cases} x = -5t + 12 \\ y = 3t \\ z = 8-t \end{cases}$ 
+Donc il y a que la deuxième droite dont une représentation paramétrique est : $\begin{cases} x = -5t + 12 \\ y = 3t \\ z = 8-t \end{cases}$ 
 qui est parallèle au plan $(\mathcal{P})$.
 
 % Question 3
@@ -148,7 +155,7 @@ qui est parallèle au plan $(\mathcal{P})$.
 \subsection*{Question 3 :}
 \noindent
 On considère la droite $(\mathcal{D})$ passant par $A(-1; 2; 3)$ et de vecteur directeur $\vec{u}\begin{pmatrix}4 \\ -2 \\ 1 \end{pmatrix}$. \\
-Une représentation de $(\mathcal{D})$ (avec $t \in \mathds{R}$) est :
+Une représentation de $(\mathcal{D})$ (avec $t \in \mathbb{R}$) est :
 \vspace{2mm}
 \begin{itemize}
     \item[a)] $\begin{cases} x = -1 + 4t \\ y = 2 + 2t \\ z = 3 + t \end{cases}$
@@ -164,32 +171,37 @@ Une représentation de $(\mathcal{D})$ (avec $t \in \mathds{R}$) est :
 \noindent
 \underline{Justification :}
 \\
-On commence par chercher quelles représentations paramétriques ont un vecteur directeur colinéaire avec le vecteur $\vec{u}$. S'il ne le sont pas alors la représentation paramétrique 
+On commence par chercher quelles représentations paramétriques ont un vecteur directeur colinéaire avec le vecteur $\vec{u}$. S'ils ne le sont pas alors la représentation paramétrique 
 ne peut être une représentation de $(\mathcal{D})$. 
 \vspace{3mm}
 \begin{itemize}
     \item[a)] $\begin{cases} x = -1 + 4t \\ y = 2 + 2t \\ z = 3 + t \end{cases}$ a un vecteur directeur $\vec{d_1}\begin{pmatrix} 4 \\ 2 \\ 1 \end{pmatrix}$. 
-        \\On cherche a savoir s'il existe une solution a $\begin{cases} 4k = 4 \\ 2k = -2 \\ k = 1 \end{cases}$
+        \\On cherche à savoir s'il existe une solution à $\begin{cases} 4k = 4 \\ 2k = -2 \\ k = 1 \end{cases}$
         \\
         $\iff \begin{cases} k = 1 \\ k = -1 \\k = 1 \end{cases}$ 
-        \\Ce qui est impossible, donc ça ne peut être a). \vspace{5mm}
+        \\[2mm] 
+        Ce qui est impossible, donc ça ne peut être a). \vspace{5mm}
     
     \item[b)]  $\begin{cases} x = 4t + 1 \\ y = -2t + 2 \\ z = t + 3 \end{cases}$ a un vecteur directeur $\vec{d_2}\begin{pmatrix} 4 \\ -2 \\ 1 \end{pmatrix}$. 
-        \\On cherche a savoir s'il existe une solution a $\begin{cases} 4k = 4 \\ -2k = -2 \\ k = 1 \end{cases}$ 
+        \\On cherche a savoir s'il existe une solution à $\begin{cases} 4k = 4 \\ -2k = -2 \\ k = 1 \end{cases}$ 
         \\ 
         $\iff \begin{cases} k = 1 \\ k = 1 \\k = 1 \end{cases}$ 
-        \\Donc b) pourrait être solution. \vspace{5mm}
+        \\[2mm]
+        Donc b) pourrait être solution. \vspace{5mm}
 
     \item[c)] $\begin{cases} x = -5 - 6t \\ y = 4 + 3t \\ z = 2-1,5t \end{cases}$ a un vecteur directeur $\vec{d_3}\begin{pmatrix} -6 \\ 3 \\ -1,5 \end{pmatrix}$. 
-        \\On cherche a savoir s'il existe une solution a $\begin{cases} -6k = 4 \\ 3k = -2 \\ -1,5k = 1 \end{cases}$
+        \\On cherche a savoir s'il existe une solution à $\begin{cases} -6k = 4 \\ 3k = -2 \\ -1,5k = 1 \end{cases}$
         \\
         $\iff \begin{cases} k = -\frac{2}{3} \\ k = -\frac{2}{3} \\k = -\frac{2}{3} \end{cases}$ 
-        \\Donc c) pourrait être solution. \vspace{5mm}
+        \\[2mm]
+        Donc c) pourrait être solution. \vspace{5mm}
+
     \item[d)] $\begin{cases} x = -2 - 8t \\ y = 4 - 4t \\ z = 6 + 2t \end{cases}$ a un vecteur directeur $\vec{d_4}\begin{pmatrix} 8 \\ -4 \\ 2 \end{pmatrix}$. 
-        \\On cherche a savoir s'il existe une solution a $\begin{cases} 8k = 4 \\-4k = -2 \\ 2k = 1 \end{cases}$
+        \\On cherche à savoir s'il existe une solution à $\begin{cases} 8k = 4 \\-4k = -2 \\ 2k = 1 \end{cases}$
         \\
         $\iff \begin{cases} k = \frac{1}{2} \\ k = \frac{1}{2} \\k = \frac{1}{2} \end{cases}$
-        \\Donc d) pourrait être solution. \vspace{5mm}
+        \\[2mm]
+        Donc d) pourrait être solution. \vspace{5mm}
 \end{itemize}
 
 \noindent
@@ -229,8 +241,8 @@ Lequel des vecteurs suivants est normal au plan $(ABC)$ ?
     \item[\tikzmark{bl}d)] $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$  \tikzmark{br} 
 \end{itemize}
 \tikz[overlay,remember picture]{\draw[black]
-    ($(bl)+(-0.2em, 2.5em)$) rectangle
-    ($(br)+(0.1em, -2em)$;)
+    ($(bl)+(-0.2em, 3em)$) rectangle
+    ($(br)+(0.1em, -2.5em)$)
 }
 \vspace{3mm}
 
@@ -238,15 +250,15 @@ Lequel des vecteurs suivants est normal au plan $(ABC)$ ?
 \underline{Justification :}
 \\
 Tout vecteur normal au plan est orthogonal aux vecteurs appertenant au plan. 
-C'est-à-dire que le produit scalaire entre le vecteur normal et deux vecteurs non-colinéaires appartenant au plan doivent tout les deux être égaux à 0.
+C'est-à-dire que le produit scalaire entre le vecteur normal et deux vecteurs non-colinéaires appartenant au plan doivent tous les deux être égaux à 0.
 \\
 On a $\overrightarrow{\text{AB}}\begin{pmatrix}-1-1\\1-\frac{1}{2} \\ 2-1\end{pmatrix} = \overrightarrow{\text{AB}}\begin{pmatrix} -2 \\ \frac{1}{2} \\ 1\end{pmatrix}$ et 
 $\overrightarrow{\text{AC}}\begin{pmatrix} 0-1 \\ 0- \frac{1}{2} \\ 3-1 \end{pmatrix} = \overrightarrow{\text{AB}}\begin{pmatrix} -1 \\ -\frac{1}{2} \\ 2 \end{pmatrix}$
-\\
-On vérifie que $\overrightarrow{\text{AB}} \neq k\overrightarrow{\text{AC}}$, $k \in \mathds{R}$.
-\\ \\
+\\[2mm]
+On vérifie que $\overrightarrow{\text{AB}} \neq k\overrightarrow{\text{AC}}$, $k \in \mathbb{R}$.
+\\[2mm]
 $\begin{cases} -2 = -k \\ \frac{1}{2} = -\frac{1}{2}k \\ 1 = 2k \end{cases} \iff \begin{cases}k = 2 \\ k = -1 \\ k = \frac{1}{2} \end{cases}$ 
-\\ \\
+\\[2mm]
 Cela est impossible donc $\overrightarrow{\text{AB}}$ et $\overrightarrow{\text{AC}}$ ne sont pas colinéaires et donc sont des vecteurs directeurs du plan. 
 \\
 On vérifie maintenant pour chaque vecteur s'il est orthogonal aux deux autres :
@@ -259,8 +271,8 @@ On vérifie maintenant pour chaque vecteur s'il est orthogonal aux deux autres :
     \item[c)] $\begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix} .\ \overrightarrow{\text{AB}} = 3 \times (-2) + (-2) \times \frac{1}{2} + 1 \times 1 = -6 \neq 0$
         \\ Donc $\begin{pmatrix} 3 \\ -2 \\ 1 \end{pmatrix}$  et $\overrightarrow{\text{AB}}$ ne sont pas orthogonaux donc c) n'est pas solution. \vspace{2mm}
     \item[d)] $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} .\ \overrightarrow{\text{AB}} = 1 \times (-2) + 2 \times \frac{1}{2} + 1 \times 1 = 0$ et
-        \\ $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} .\ \overrightarrow{\text{AC}} = 1 \times (-1) + 2 \times (-\frac{1}{2}) + 1 \times 2 = 0$
-        \\ Donc  $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$ est orthogonal à $\overrightarrow{\text{AB}}$ et à $\overrightarrow{\text{AC}}$, alors il est normal au plan $(\mathcal{P})$.
+        \\[2mm] $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix} .\ \overrightarrow{\text{AC}} = 1 \times (-1) + 2 \times (-\frac{1}{2}) + 1 \times 2 = 0$
+        \\[2mm] Donc  $\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}$ est orthogonal à $\overrightarrow{\text{AB}}$ et à $\overrightarrow{\text{AC}}$, alors il est normal au plan $(\mathcal{P})$.
 \end{itemize}
 \vspace{3mm}
 Donc d) est la solution.
@@ -299,9 +311,9 @@ De plus : \\
     \item[\textbullet] $\text{EF} = \|\overrightarrow{\text{EF}}\| = \sqrt{(-1)^2 + (-2)^2 + 5^2} = \sqrt{30}$ \\ 
     \item[\textbullet] $\text{EG} = \| \overrightarrow{\text{EG}} \| = \sqrt{(-3)^2 + 2^2 + 4^2} = \sqrt{29}$ \\  
 \end{itemize}
-Donc $\overrightarrow{\text{EF}} .\ \overrightarrow{\text{EG}} = \sqrt{30}\ \sqrt{29} \times \cos{\left( \widehat{FEG} \right)} = 19 \iff \cos{\left( \widehat{FEG} \right)} = \frac{19}{\sqrt{30}\ \sqrt{29}}$
+Donc $\overrightarrow{\text{EF}} .\ \overrightarrow{\text{EG}} = \sqrt{30}\times \sqrt{29} \times \cos{\left( \widehat{FEG} \right)} = 19 \iff \cos{\left( \widehat{FEG} \right)} = \frac{19}{\sqrt{30}\times \sqrt{29}}$
 \\
-Ainsi, $\widehat{\text{FEG}} = \cos^{-1}{ \left( \frac{19}{ \sqrt{30} \times \sqrt{29}} \right) } \approx 49,897^{\circ}$ on arrondi à l'unité ce qui donne $50^{\circ}$.
+Ainsi, $\widehat{\text{FEG}} = \cos^{-1}{ \left( \frac{19}{ \sqrt{30 \times 29}} \right) } \approx 49,897^{\circ}$ on arrondi à l'unité ce qui donne $50^{\circ}$.
 
 % Exercice 2
 \phantomsection
@@ -359,7 +371,6 @@ La probabilité que le PM prenne une bonne décision est d'environ 0,433.
 $p_{\overline{\emph{\textbf{B}}}}(\emph{\textbf{F}}) = \frac{p(\emph{\textbf{F}}\ \cap \ \overline{\emph{\textbf{B}}})}{p(\overline{\emph{\textbf{B}}})}
 = \frac{p(\emph{\textbf{F}})\ \times \ p_{\emph{\textbf{F}}}(\overline{\emph{\textbf{B}}})}{p(\overline{\emph{\textbf{B}}})}
 = \frac{\frac{1}{3}\ \times \ 0,5}{1\ -\ p(\emph{\textbf{B}})} = \frac{5}{17} \approx 0,294$.
-\vspace{2cm}
 
 % Partie B
 \phantomsection
@@ -401,7 +412,7 @@ p(X \geq 1) \geq 0,99 &\iff 1 - p(X = 0) \geq 0,99 \\
 &\iff \binom{n}{0} \left( \frac{13}{30}\right)^0 \left(1 - \frac{13}{30}\right)^{n-0} \leq 0,01 \\
 &\iff 1 \times 1 \times \left(\frac{17}{30} \right)^n \leq 0,01 \\
 &\iff n \times \ln{\left( \frac{17}{30} \right) } \leq \ln{\left(0,01\right)} \\ 
-&\phantom{\iff} \text{ car } x \mapsto \ln{\left(x\right)} \text{ est croissante sur } \mathds{R}^+_*\\
+&\phantom{\iff} \text{ car } x \mapsto \ln{\left(x\right)} \text{ est croissante sur } \mathbb{R}^+_*\\
 &\iff n  \geq \frac{\ln{\left(0,01\right)}}{\ln{\left(17\right)}-\ln{\left(30\right)}} \\
 &\phantom{\iff} \text{ car } 0 \leq \frac{17}{30} \leq 1 \text{ donc } \ln{\left(\frac{17}{30}\right)} \leq 0 \\
 & \phantom{\iff} \text{ donc il faut changer de sens.}
@@ -409,7 +420,7 @@ p(X \geq 1) \geq 0,99 &\iff 1 - p(X = 0) \geq 0,99 \\
 \\[2mm]
 Alors, $n \geq \frac{\ln{\left(0,01\right)}}{\ln{\left(17\right)}\ -\ \ln{\left(30\right)}} \approx 8,108 $
 \\ \\
-Il faut qu'au moins 9 jours se soit écoulés pour que la probabilité que le PM ait pris au moins une bonne décision soit supérieure à 0,99.
+Il faut qu'au moins 9 jours se soient écoulés pour que la probabilité que le PM ait pris au moins une bonne décision soit supérieure à 0,99.
 
 % Partie C
 \phantomsection
@@ -444,11 +455,12 @@ Les gains des deux cases sont donnés par :
 \paragraph*{Calculer l'espérance de gain de chacune des deux cases, puis l'espérance de gain d'un ticket.\\[5mm]}
 
 On note $T_1$ la variable aléatoire comptant le gain provenant de la case 1, $T_2$ la variable aléatoire comptant le gain provenant de la case 2, 
-et $G = T_1 + T_2$ les gains (pour le joueur) de chaque ticket.
-\\
-$\text{E}(T_1) = 0,70 \times 0 + 0,20 \times 2 + 0,10 \times 5 = \pounds 0,9$ \\
-$\text{E}(T_2) = 0,70 \times 0 + 0,25 \times 5 + 0,05 \times 10 = \pounds 1,75$ \\
-Donc $\text{E}(G) = \text{E}(T_1 + T_2) = \text{E}(T_1) + \text{E}(T_2)$ car $T_1$ et $T_2$ sont indépendant l'un de l'autre, alors $\text{E}(G) = 0,9 + 1,75 = \pounds 2,65$
+et $G = T_1 + T_2$ les gains (pour le joueur) de chaque ticket. \\
+\begin{itemize}
+    \item[\textbullet] $\text{E}(T_1) = 0,70 \times 0 + 0,20 \times 2 + 0,10 \times 5 = \pounds 0,9$ \\
+    \item[\textbullet] $\text{E}(T_2) = 0,70 \times 0 + 0,25 \times 5 + 0,05 \times 10 = \pounds 1,75$ \\
+\end{itemize}
+Donc $\text{E}(G) = \text{E}(T_1 + T_2) = \text{E}(T_1) + \text{E}(T_2)$ car $T_1$ et $T_2$ sont indépendants l'un de l'autre, alors $\text{E}(G) = 0,9 + 1,75 = \pounds 2,65$
 
 % Question 2 
 \phantomsection
@@ -460,8 +472,8 @@ Si le gain pour un joueur d'un ticket a une espérance de £2,65 alors 1000 tick
 \\
 Les gains de l'état peut être décrit comme la difference entre le bénéfice initial généré par la vente des tickets et l'espérance des gains pour les joueurs ce qui est une perte pour l'état.
 On note $P$ le prix du ticket. \\
-On a donc : \\
-$\pounds 850 = 1000 \times P - \pounds 2650 \iff P = \frac{2650\ +\ 850}{1000} = \pounds 3,50$ \\
+On a donc : \\[2mm]
+$\pounds 850 = 1000 \times P - \pounds 2650 \iff P = \frac{2650\ +\ 850}{1000} = \pounds 3,50$ \\[2mm]
 L'état doit vendre chaque ticket à £3,50 pour qu'en moyenne il tire un gain de £850 pour 1000 tickets de vendu.
 \vspace{1cm}
 
@@ -470,47 +482,13 @@ L'état doit vendre chaque ticket à £3,50 pour qu'en moyenne il tire un gain d
 \addcontentsline{toc}{section}{Exercice 3 (6 points)}
 \section*{Exercice 3 (6 points)}
 
-Soit $f$ la fonction définie sur $[0;+\infty[$ par $f(x) = x\ \ln \left(x + 1 \right)$ et $C_f$ sa courbe représntative dans le rère orthoonormé $(O;I;J)$.
+Soit $f$ la fonction définie sur $[0;+\infty[$ par $f(x) = x\ \ln \left(x + 1 \right)$ et $C_f$ sa courbe représntative dans le repère orthonormé $(O;I;J)$.
 \\
 Le but du problème est de trouver les coordonnées des points d'intersection de la courbe $C_f$ avec les côtés du rectangle OIBA dont l'aire est égale à celle du domaine bleu sur la figure ci-dessous :
 \\
-%\begin{center}\begin{tikzpicture}[scale=0.8, domain=-7:7, smooth, samples=100]
-%  \draw[gray,very thin] (-7,-4) grid (7,4);
-%   \draw[thick, -{Latex[length=3mm]}] (-7,0) -- (7,0) node[anchor=north east, scale=0.75] {$x$};
-%    \draw[thick, -{Latex[length=3mm]}] (0,-4) -- (0,4) node[anchor=north east, scale=0.75] {$y$};
-%    \foreach \x in {-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6}
-%    \draw[line width=0.2mm] (\x, 0) -- (\x, -0.25);
-%    \foreach \x / \xtext in {-2*pi/-2\pi,-pi/-\pi,pi/\pi,2*pi/2\pi}
-%    \draw[line width=0.2mm] (\x, 0) -- (\x, 0.25) node[anchor=south, scale=0.7, fill=white] {$\xtext$};
-%    \foreach \x in {-3,-2,-1,1,2,3}
-%    \draw[line width=0.2mm] (-0.25, \x) -- (0, \x);
-%    \draw[darkgray, line width=0.5mm, -{Latex[length=2mm]}] (0,0) -- (0,1);
-%    \draw[darkgray, line width=0.5mm, -{Latex[length=2mm]}] (0,0) -- (1,0);
-%    
-%    \begin{axis}[anchor=origin,x=1cm, y=1cm,hide axis,restrict y to domain=-4:4]
-%        \addplot[red, very thick]{cos(deg(2*x))};
-%        \addplot[black!30!green, very thick]{sin(deg(3*x))};
-%        \addplot[blue, very thick]{2*sin(deg(x))-1};
-%        \addplot[purple, very thick]{x-cos(deg(x))};  
-%    \end{axis}
-%    \draw (0,0) node[anchor=north east, scale=0.9] {O};
-%    \draw (0.5,0) node[outer sep=10pt, anchor=north, scale=0.9] {$\vec{i}$}; 
-%    \draw (0,0.5) node[anchor=east, scale=0.9] {$\vec{j}$};
-%\end{tikzpicture}\end{center}
-%\begin{center}
-%\begin{tikzpicture}[scale=3, domain=-0.2:1.5, smooth, samples=400]
-%    \draw[gray, very thin] (0,1.2) grid (1.5, 0);
-%    \draw[->] (-0.2, 0) -- (1.5, 0) node[below]{$x$};
-%    \draw[->] (0, -0.2) -- (0, 1.2) node[left]{$y$};
-%    \draw (1, -0.02) -- (1, 0.02) node[below=0.2]{1};
-%    \draw (-0.02, 1) -- (0.02, 1) node[left=0.1]{1};
-%    \node (origin) {};
-%    \draw (0,0) node[below left] {0};
-%    \begin{axis}[anchor=origin, hide axis, restrict y to domain=0:1.2]
-%        \addplot[color=blue]{x*ln(x+1)};
-%    \end{axis}
-%\end{tikzpicture}
-%\end{center}
+\begin{center}
+\includegraphics[width=400pt]{ControleCommunMathsGrapheExercice3}
+\end{center}
 
 % Partie A
 \phantomsection
@@ -537,15 +515,20 @@ Donc par produit : $\displaystyle \lim_{x \to +\infty} f(x) = +\infty$.
 
 $f(x) = x\ln{\left(x + 1 \right)}$ donc $f'(x) = 1 \times \ln{\left(x + 1 \right)} + x \times \frac{1}{x\ +\ 1}$.
 \\[2mm]
-$\forall x \in ]0;+\infty[$ , $x+1 > \iff \ln{\left(x + 1 \right)} > 0$.
+$\forall x \in \ ]0;+\infty[$ , $x+1 > \iff \ln{\left(x + 1 \right)} > 0$.
 \\[2mm]
 De plus, $\frac{x}{x+1}> 0 \iff \begin{cases} x > 0\times (x+1) \\ x+1 \neq 0 \end{cases} \iff \begin{cases} x > 0 \\ x \neq -1 \end{cases}$
 \\[2mm]
-Or $-1\notin ]0;+\infty[$ donc $\frac{x}{x+1} > 0, \forall x \in  ]0;+\infty[$ 
+Or $-1\notin \ ]0;+\infty[$ donc $\frac{x}{x+1} > 0, \forall x \in \ ]0;+\infty[$ 
 \\[2mm]
 On en déduit que $f'(x)> 0$. On obtient donc :
-\\[3mm]
-% Tableau de signe et de variation
+\begin{center}
+\begin{tikzpicture}
+    \tkzTabInit[espcl=4, deltacl=1, lw=0.7]{$x$ /1, $f'(x)$ /1, $f(x)$ /2}{$0$, $+\infty$}
+    \tkzTabLine{z,+,}
+    \tkzTabVar{-/$0$,+/$+\infty$}
+\end{tikzpicture}
+\end{center}
 Donc $f(x)$ est strictement croissant sur $ ]0;+\infty[$ et par raisonnement similaire croissant sur $[0;+\infty[$
 
 % Question 3
@@ -558,26 +541,25 @@ On remarque que la droite de l'axe des abscisses à comme équation $y = 0$.
 \\
 L'équation de la tangeante de la courbe $C_f$ représentative de $f$ en un point $a$ est : 
 $y = f'(a)(x-a) + f(a)$.
-\\
-On veut montrer que la tangeante est en $x=0$ donc on prends $a=0$ et on obtient :
+\\[2mm]
+On veut montrer que la tangeante à la même équation que l'axe des abscisses en $x=0$ donc on prend $a=0$ et on obtient :
 \\
 $y = f'(0)(x-0) + f(0) = (\ln{\left( 0 + 1 \right)} + \frac{0}{0+1})\times x + 0 \times \ln{\left( 0 + 1 \right)}= 0x + 0 = 0$
-\\[1mm]
-Ce qui est bien l'équation attendu de l'axe des abscisses.
+\\[2mm]
+Ce qui est bien l'équation attendue de l'axe des abscisses.
 
 % Partie B
 \phantomsection
 \addcontentsline{toc}{subsection}{Partie B}
 \subsection*{Partie B - Calcul d'une aire}
 \noindent
-On pose 
-\[I = \int_{0}^{1} \frac{x^2}{x+1} \,dx\]
+On pose $I = \displaystyle \int_{0}^{1} \frac{x^2}{x+1} \,dx$
 
 % Question 1
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 1}
 \subsubsection*{Question 1 :}
-\paragraph*{Montrer que, $\forall x \in \mathds{R} \backslash \{-1\}$ : \[  \frac{x^2}{x+1}=x-1 + \frac{1}{x+1}\] \\[5mm]}
+\paragraph*{Montrer que, $\forall x \in \mathbb{R} \backslash \{-1\}$ : \[  \frac{x^2}{x+1}=x-1 + \frac{1}{x+1}\] \\[5mm]}
 
 $
 \begin{aligned}
@@ -592,33 +574,46 @@ $
 \addcontentsline{toc}{subsubsection}{Question 2}
 \subsubsection*{Question 2 :}
 \paragraph*{Montrer que $I = \ln{2} - \frac{1}{2}$.\\[5mm]}
-\begin{fleqn}
-\[I = \int_0^1 \frac{x^2}{x+1}\,dx  = \int_0^1 x-1 + \frac{1}{x+1} \,dx = \int_0^1 x-1 \,dx\ + \int_0^1 \frac{1}{x+1} \,dx\]
-\[ = \left[ \frac{x^2}{2}-x\right]_0^1 + \left[\ln{\left(x+1\right)}\right]_0^1 = \frac{1}{2}-1 - \left(\frac{0}{2}-0 \right) + \ln{\left( 1+1 \right)} - \ln{\left(0+1\right)}\]
-\end{fleqn}
+$\begin{aligned}
+    I &= \displaystyle \int_0^1 \frac{x^2}{x+1}\,dx \\
+    &= \displaystyle  \int_0^1 x-1 + \frac{1}{x+1} \,dx \\
+    &= \displaystyle \int_0^1 x-1 \,dx\ + \displaystyle \int_0^1 \frac{1}{x+1} \,dx \\
+    &= \left[ \frac{x^2}{2}-x\right]_0^1 + \left[\ln{\left(x+1\right)}\right]_0^1 \\
+    &=\frac{1}{2}-1 - \left(\frac{0}{2}-0 \right) + \ln{\left( 1+1 \right)} - \ln{\left(0+1\right)}
+\end{aligned}$
+\\[2mm]
 Donc $I = \ln{2} - \frac{1}{2}$.
 
 % Question 3
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 3}
 \subsubsection*{Question 3 :}
-\paragraph*{En déduire, à l'aide d'une intégration par parties, laire $\mathcal{A}$, exprimée en unités d'aires (u.a.), 
+\paragraph*{En déduire, à l'aide d'une intégration par parties, l'aire $\mathcal{A}$, exprimée en unités d'aires (u.a.), 
 du domaine entre la courbe $C_f$ et les droites d'équation $x = 0$, $x=1$ et $y=0$.\\[5mm]}
 
-On commence par étudier le signe de $f(x)$ sur $[0;+\infty[$. On a $x \geq 0$ et $x+1 \geq 1 \iff \ln{\left( x+1 \right)}\geq 0$ donc :
+On commence par étudier le signe de $f(x)$ sur $[0;+\infty[$. 
 \\
-% Insert tableau de signe
-\\
+On a $x \geq 0$ et $x+1 \geq 1 \iff \ln{\left( x+1 \right)}\geq 0$ donc :
+\begin{center}
+\begin{tikzpicture}
+    \tkzTabInit[espcl=4, deltacl=1, lw=0.7]{$x$ /1, $x$ /1, $\ln{\left(x+1\right)}$/1, $f(x)$/1}{$0$, $+\infty$}
+    \tkzTabLine{z,+,}
+    \tkzTabLine{z,+,}
+    \tkzTabLine{z,+,}
+\end{tikzpicture}
+\end{center}
 Donc $f(x) \geq 0$, $\forall x \in [0;+\infty[$. 
 \\
-Donc l'aire $\mathcal{A}$ sous la courbe $C_f$ entre 0 et 1 est l'intégrale de $f$ la fonction associé à $C_f$ entre 0 et 1.
+Donc l'aire $\mathcal{A}$ sous la courbe $C_f$ entre 0 et 1 est l'intégrale de $f$ la fonction associée à $C_f$ entre 0 et 1.
 \\
-\begin{fleqn}
-\[\int_0^1 f(x) \,dx = \int_0^1 x\ln{\left( x+1 \right)} \,dx = \left[ \frac{x^2}{2} \ln{\left( x+1 \right)} \right]_0^1 - \int_0^1 \frac{x^2}{2} \times \frac{1}{x+1} \,dx\]
-\[ = \left[ \frac{x^2}{2} \ln{\left( x+1 \right)} \right]_0^1 - \frac{1}{2} \int_0^1 \frac{x^2}{x+1}\,dx = 
-\frac{1}{2}\ln{2} - 0 - \frac{1}{2}\left( \ln{2} - \frac{1}{2} \right)\]
-\[ = - \left( -\frac{1}{2} \right) = \frac{1}{2}\]
-\end{fleqn}
+$\begin{aligned}
+    \displaystyle \int_0^1 f(x) \,dx &= \displaystyle \int_0^1 x\ln{\left( x+1 \right)} \,dx \\
+    &= \left[ \frac{x^2}{2} \ln{\left( x+1 \right)} \right]_0^1 - \displaystyle \int_0^1 \frac{x^2}{2} \times \frac{1}{x+1} \,dx \\
+    &= \frac{1}{2}\ln{2} - 0 - \displaystyle \frac{1}{2} \int_0^1 \frac{x^2}{x+1}\,dx \\
+    &= \frac{1}{2}\ln{2} - \frac{1}{2}\left( \ln{2} - \frac{1}{2} \right) \\ 
+    &= - \left( -\frac{1}{2} \right) \\
+    &= \frac{1}{2}
+\end{aligned}$
 
 % Partie C
 \phantomsection
@@ -629,9 +624,9 @@ Donc l'aire $\mathcal{A}$ sous la courbe $C_f$ entre 0 et 1 est l'intégrale de 
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 1}
 \subsubsection*{Question 1 :}
-\paragraph*{Montrer que l'quation $f(x) = 0,25$ admet une unique solution  $\alpha$ sur l'intervalle $[0;1]$.\\[5mm]}
+\paragraph*{Montrer que l'équation $f(x) = 0,25$ admet une unique solution  $\alpha$ sur l'intervalle $[0;1]$.\\[5mm]}
 
-D'après la Quesetion 2 de la Partie A de l'éxercice, on sait que $f$ est strictement croissant sur $]0;+\infty[$.
+D'après la Question 2 de la Partie A de l'éxercice, on sait que $f$ est strictement croissant sur $]0;+\infty[$.
 \\
 De plus : 
 \\
@@ -639,13 +634,13 @@ De plus :
     \item[\textbullet] $ \displaystyle \lim_{x \to 0^+}f(x)=0$ \\[1mm]
     \item[\textbullet] $ \displaystyle \lim_{x \to 1}f(x) = \ln{2} $ \\[1mm]
 \end{itemize}
-Donc d'après le théorème des valeurs intermédiaire, il existe une unique solution $\alpha \in [0;1]$ tel que $f(\alpha) = 0,25$, car $0,25 \in [0;\ln{2}]$.
+Donc d'après le théorème des valeurs intermédiaires, il existe une unique solution $\alpha \in [0;1]$ tel que $f(\alpha) = 0,25$, car $0,25 \in [0;\ln{2}]$.
 
 % Question 2 
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 2}
 \subsubsection*{Question 2 :}
-\paragraph*{Donner un encarement de $\alpha$ à $10^{-2}$ près.\\[5mm]}
+\paragraph*{Donner un encadrement de $\alpha$ à $10^{-2}$ près.\\[5mm]}
 
 A l'aide de la calculatrice on trouve $\alpha \in [0,56;0,57]$, en effet (car $f$ est décroissant): 
 \\
@@ -657,15 +652,17 @@ $f(0,56) \leq f(\alpha) \leq f(0,57) \iff 0,249 \leq 0,25 \leq 0,257$ ce qui est
 \subsubsection*{Question 3 :}
 \paragraph*{Donner les points d'intersection de la courbe $C_f$ avec les côtés du rectangle OIBA dont l'aire est égale à celle du domaine bleu.\\[5mm]}
 
-L'aire du rectangle OIBA est égale a celle de l'aire sous la courbe $C_f$ entre 0 et 1, alors que OIBA a une longueur de 1 donc sa hauteur est la valeur moyenne :
+L'aire du rectangle OIBA est égale à celle de l'aire sous la courbe $C_f$ entre 0 et 1, alors que OIBA a une longueur de 1 donc sa hauteur est la valeur moyenne :
 \\
-$\frac{1}{1\ -\ 0}\displaystyle \int_0^1 x\ln{\left(x+1\right)} \,dx = 0,25$ donc les côtés sont délimitées par $x=0$, $x=1$, $y=0$ et $y=0,25$, 
-les deux points qui appartiennent à la courbe $C_f$ et aux côtés de OIBA sont $(0;0)$ et $(\alpha;0,25)$, $\alpha \in[0,56;0,57]$.
+$\frac{1}{1\ -\ 0}\displaystyle \int_0^1 x\ln{\left(x+1\right)} \,dx = 0,25$ donc les côtés sont délimités par $x=0$, $x=1$, $y=0$ et $y=0,25$.
+\\ 
+Les deux points qui appartiennent à la courbe $C_f$ et aux côtés de OIBA sont $(0;0)$ car $(0;0) = (0;f(0))$ et $y=0$, 
+et $(\alpha;0,25)$ car $(\alpha;0,25) = (\alpha;f(\alpha))$, $\alpha \in[0,56;0,57]$ et $y=0,25$.
 
 % Exercice 4
 \phantomsection
 \addcontentsline{toc}{section}{Exercice 4}
-\section*{Exercice 4}
+\section*{Exercice 4 (4 points)}
 
 Soit $(u_n)$ la suite définie par $u_0 = 5$ et pour entier naturel $n$, \\ $u_{n+1} = 2 - e^{-u_n}$.
 
@@ -681,7 +678,9 @@ Soit $(u_n)$ la suite définie par $u_0 = 5$ et pour entier naturel $n$, \\ $u_{
 
 \underline{Initialisation :}
 \\
-$u_0 = 5$ et $u_1 = 2 - e^{-u_0} = 2 - e^{-5} \approx 1,99$ donc $0 \leq u_1 \leq u_0$ donc la propriété est vrai pour le rang $n = 0$.
+$u_0 = 5$ et $u_1 = 2 - e^{-u_0} = 2 - e^{-5} \approx 1,99$ donc $0 \leq u_1 \leq u_0$ 
+\\
+Donc la propriété est vrai pour le rang $n = 0$.
 \\
 \\
 \underline{Hérédité :}
@@ -693,20 +692,20 @@ Par hypothèse de récurrence on a:
 $ \begin{aligned}
 0 \leq u_{k+1} \leq u_k 
 &\iff 0 \geq -u_{k+1} \geq -u_{k} \\
-&\iff 1 \geq e^{-u_{k+1}} \geq e^{-u_k} \text{ car } x \mapsto e^x \text{ est croissant sur } \mathds{R} \\
+&\iff 1 \geq e^{-u_{k+1}} \geq e^{-u_k} \text{ car } x \mapsto e^x \text{ est croissant sur } \mathbb{R} \\
 &\iff -1 \leq - e^{-u_{k+1}} \leq - e^{-u_k} \\
 &\iff 0 \leq 1 \leq 2 - e^{-u_{k+1}} \leq 2 - e^{-u_k} \\
 &\iff 0 \leq u_{k+2} \leq u_{k+1} 
 \end{aligned}$
 \\ \\
-Donc la propriété est prouvé $\forall n \in \mathds{N}$.
+Donc la propriété est prouvée $\forall n \in \mathbb{N}$.
 
 % b)
 \phantomsection
 \addcontentsline{toc}{subsubsection}{b)}
 \paragraph*{b) Que peut-on en conclure ?\\[5mm]}
 
-On sait que $u_{n+1} \leq u_n$, $\forall n \in \mathds{N}$ donc $(u_n)$ est décroissante, et $0 \leq u_n$, $\forall n \in \mathds{N}$ donc $(u_n)$ est minorée. 
+On sait que $u_{n+1} \leq u_n$, $\forall n \in \mathbb{N}$ donc $(u_n)$ est décroissante, et $0 \leq u_n$, $\forall n \in \mathbb{N}$ donc $(u_n)$ est minorée. 
 \\
 Ainsi on en déduit que la suite $(u_n)$ est convergeante.
 
@@ -740,12 +739,13 @@ Alors, $f(l) = l \iff 2 - e^{-l} - l = 0$ donc $l$ est solution de l'équation $
 On admet qu'elle est strictement décroissante sur $[0;+\infty[$ et que $\displaystyle \lim_{x \to +\infty}f(x)=-\infty$.
 \\
 Expliquer ce que calcule l'algorithme ci-dessous.
-% Insert code somehow
-\\[5mm]
-On vérifie les valeurs prise par $f(x)$ pour $x$ partant de 0 et augmentant en incréments de $10^{-n}$. On sait que $f(0) = 1$ et $\displaystyle \lim_{x \to +\infty}f(x) = -\infty$ et que 
+\begin{center}
+\includegraphics[width=300pt, frame]{ControleCommunMathsCodeExercice4.png}
+\end{center}
+On vérifie les valeurs prises par $f(x)$ pour $x$ partant de 0 et augmentant en incréments de $10^{-n}$. On sait que $f(0) = 1$ et $\displaystyle \lim_{x \to +\infty}f(x) = -\infty$ et que 
 $f(x)$ est strictement décroissant donc d'après le théorème des valeurs intermédiaires il existe une unique solution $\alpha$ tel que $f(\alpha)=0$. 
 \\ \\
-Comme la fonction est décroissante et $f(0)>0$, on sait que elle va franchir la valeur de 0 et ensuite être négative, il faut donc vérifier quelle est la première valeur de $x$ 
+Comme la fonction est décroissante et $f(0)>0$, on sait qu'elle va franchir la valeur de 0 et ensuite être négative, il faut donc vérifier quelle est la première valeur de $x$ 
 pour laquelle $f(x)<0$ ce qui approxime $\alpha$.
 
 % c)
