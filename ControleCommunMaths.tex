@@ -387,7 +387,7 @@ On note $X$ la variable aléatoire comptant le nombre de bonnes décisions prise
 \subsubsection*{Question 1 :}
 \paragraph*{Quelle loi suit la variable aléatoire $X$ ? Justifier. \\[5mm]}
 
-On répète plusieurs fois de manière indépendante une épreuve de Bernoulli don le succès $X$ est l'événement \guillemotleft \ Le PM a pris une bonne décision\ \guillemotright \
+On répète plusieurs fois de manière indépendante une épreuve de Bernoulli dont le succès $X$ est l'événement \guillemotleft \ Le PM a pris une bonne décision\ \guillemotright \
 qui a pour probabilité $p = \frac{13}{30}$. La variable aléatoire $X$ suit donc une loi binomiale.
 
 % Question 2 
@@ -397,7 +397,12 @@ qui a pour probabilité $p = \frac{13}{30}$. La variable aléatoire $X$ suit don
 \paragraph*{Une semaine vient de se passer (5 jours). Quelle est la probabilité qu'au moins trois bonnes décisions aient été prises ? Justifier.\\[5mm]}
 
 Prendre au moins 3 bonnes décisions implique que il n'a pas pris moins de 2 bonnes décisions.\\
-$p(X \geq 3) = 1 - p(x \leq 2) = 1- \left( p(X=0) + p(X = 1) + p(X = 2)\right) \approx 0,624$
+$\begin{aligned}
+p(X \geq 3) &= 1 - p(x \leq 2) \\
+&= 1- \left( p(X=0) + p(X = 1) + p(X = 2)\right) \\
+&\approx 1 - 0,624 \\
+&\approx 0,367
+\end{aligned}$
 
 % Question 3 
 \phantomsection
@@ -459,8 +464,8 @@ et $G = T_1 + T_2$ les gains (pour le joueur) de chaque ticket. \\
 \begin{itemize}
     \item[\textbullet] $\text{E}(T_1) = 0,70 \times 0 + 0,20 \times 2 + 0,10 \times 5 = \pounds 0,9$ \\
     \item[\textbullet] $\text{E}(T_2) = 0,70 \times 0 + 0,25 \times 5 + 0,05 \times 10 = \pounds 1,75$ \\
+    \item[\textbullet] $\text{E}(G) = \text{E}(T_1 + T_2) = \text{E}(T_1) + \text{E}(T_2) = 0,9 + 1,75 = \pounds 2,65$ \\
 \end{itemize}
-Donc $\text{E}(G) = \text{E}(T_1 + T_2) = \text{E}(T_1) + \text{E}(T_2)$ car $T_1$ et $T_2$ sont indépendants l'un de l'autre, alors $\text{E}(G) = 0,9 + 1,75 = \pounds 2,65$
 
 % Question 2 
 \phantomsection
@@ -482,7 +487,7 @@ L'état doit vendre chaque ticket à £3,50 pour qu'en moyenne il tire un gain d
 \addcontentsline{toc}{section}{Exercice 3 (6 points)}
 \section*{Exercice 3 (6 points)}
 
-Soit $f$ la fonction définie sur $[0;+\infty[$ par $f(x) = x\ \ln \left(x + 1 \right)$ et $C_f$ sa courbe représntative dans le repère orthonormé $(O;I;J)$.
+Soit $f$ la fonction définie sur $[0;+\infty[$ par $f(x) = x\ln \left(x + 1 \right)$ et $C_f$ sa courbe représntative dans le repère orthonormé $(O;I;J)$.
 \\
 Le but du problème est de trouver les coordonnées des points d'intersection de la courbe $C_f$ avec les côtés du rectangle OIBA dont l'aire est égale à celle du domaine bleu sur la figure ci-dessous :
 \\
@@ -515,13 +520,11 @@ Donc par produit : $\displaystyle \lim_{x \to +\infty} f(x) = +\infty$.
 
 $f(x) = x\ln{\left(x + 1 \right)}$ donc $f'(x) = 1 \times \ln{\left(x + 1 \right)} + x \times \frac{1}{x\ +\ 1}$.
 \\[2mm]
-$\forall x \in \ ]0;+\infty[$ , $x+1 > \iff \ln{\left(x + 1 \right)} > 0$.
+$\forall x \in \ ]0;+\infty[$ , $x+1 > 1 \iff \ln{\left(x + 1 \right)} > 0$.
 \\[2mm]
-De plus, $\frac{x}{x+1}> 0 \iff \begin{cases} x > 0\times (x+1) \\ x+1 \neq 0 \end{cases} \iff \begin{cases} x > 0 \\ x \neq -1 \end{cases}$
+On remarque que $x > 0$ et $x + 1 >0$, de plus, la division de deux nombres positifs est elle même positive, donc $\frac{x}{x+1} > 0$.
 \\[2mm]
-Or $-1\notin \ ]0;+\infty[$ donc $\frac{x}{x+1} > 0, \forall x \in \ ]0;+\infty[$ 
-\\[2mm]
-On en déduit que $f'(x)> 0$. On obtient donc :
+La somme de deux nombres positifs étant positive, on peut en déduire que $f'(x)> 0$. On obtient donc :
 \begin{center}
 \begin{tikzpicture}
     \tkzTabInit[espcl=4, deltacl=1, lw=0.7]{$x$ /1, $f'(x)$ /1, $f(x)$ /2}{$0$, $+\infty$}
@@ -529,22 +532,22 @@ On en déduit que $f'(x)> 0$. On obtient donc :
     \tkzTabVar{-/$0$,+/$+\infty$}
 \end{tikzpicture}
 \end{center}
-Donc $f(x)$ est strictement croissant sur $ ]0;+\infty[$ et par raisonnement similaire croissant sur $[0;+\infty[$
+Donc $f$ est strictement croissante sur $ ]0;+\infty[$ et par raisonnement similaire croissant sur $[0;+\infty[$
 
 % Question 3
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 3}
 \subsubsection*{Question 3 :}
-\paragraph*{Montrer que l'axe des abscisses est la tangeante à $C_f$ en $x=0$ \\[5mm]}
+\paragraph*{Montrer que l'axe des abscisses est la tangente à $C_f$ en $x=0$ \\[5mm]}
 
 On remarque que la droite de l'axe des abscisses à comme équation $y = 0$.
 \\
-L'équation de la tangeante de la courbe $C_f$ représentative de $f$ en un point $a$ est : 
+L'équation de la tangente de la courbe $C_f$ représentative de $f$ en un point $a$ est : 
 $y = f'(a)(x-a) + f(a)$.
 \\[2mm]
-On veut montrer que la tangeante à la même équation que l'axe des abscisses en $x=0$ donc on prend $a=0$ et on obtient :
+On veut montrer que la tangente à la même équation que l'axe des abscisses en $x=0$ donc on prend $a=0$ et on obtient :
 \\
-$y = f'(0)(x-0) + f(0) = (\ln{\left( 0 + 1 \right)} + \frac{0}{0+1})\times x + 0 \times \ln{\left( 0 + 1 \right)}= 0x + 0 = 0$
+$y = f'(0)(x-0) + f(0) = (\ln{\left( 0 + 1 \right)} + \frac{0}{0\ +\ 1})\times x + 0 \times \ln{\left( 0 + 1 \right)}= 0x + 0 = 0$
 \\[2mm]
 Ce qui est bien l'équation attendue de l'axe des abscisses.
 
@@ -559,7 +562,7 @@ On pose $I = \displaystyle \int_{0}^{1} \frac{x^2}{x+1} \,dx$
 \phantomsection
 \addcontentsline{toc}{subsubsection}{Question 1}
 \subsubsection*{Question 1 :}
-\paragraph*{Montrer que, $\forall x \in \mathbb{R} \backslash \{-1\}$ : \[  \frac{x^2}{x+1}=x-1 + \frac{1}{x+1}\] \\[5mm]}
+\paragraph*{Montrer que, $\forall x \in \mathbb{R} \backslash \{-1\}$ : $\frac{x^2}{x\ +\ 1}=x-1 + \frac{1}{x\ +\ 1}$ \\[5mm]}
 
 $
 \begin{aligned}
@@ -626,13 +629,14 @@ $\begin{aligned}
 \subsubsection*{Question 1 :}
 \paragraph*{Montrer que l'équation $f(x) = 0,25$ admet une unique solution  $\alpha$ sur l'intervalle $[0;1]$.\\[5mm]}
 
-D'après la Question 2 de la Partie A de l'éxercice, on sait que $f$ est strictement croissant sur $]0;+\infty[$.
+D'après la question 2 de la partie A , on sait que $f$ est strictement croissante sur $]0;+\infty[$.
 \\
 De plus : 
 \\
 \begin{itemize}
     \item[\textbullet] $ \displaystyle \lim_{x \to 0^+}f(x)=0$ \\[1mm]
     \item[\textbullet] $ \displaystyle \lim_{x \to 1}f(x) = \ln{2} $ \\[1mm]
+    \item[\textbullet] D'après la question 2 de la partie A, $f$ est dérivable sur $[0;+\infty[$ et donc continue sur cette même intervalle. \\[1mm]
 \end{itemize}
 Donc d'après le théorème des valeurs intermédiaires, il existe une unique solution $\alpha \in [0;1]$ tel que $f(\alpha) = 0,25$, car $0,25 \in [0;\ln{2}]$.
 
@@ -642,7 +646,7 @@ Donc d'après le théorème des valeurs intermédiaires, il existe une unique so
 \subsubsection*{Question 2 :}
 \paragraph*{Donner un encadrement de $\alpha$ à $10^{-2}$ près.\\[5mm]}
 
-A l'aide de la calculatrice on trouve $\alpha \in [0,56;0,57]$, en effet (car $f$ est décroissant): 
+A l'aide de la calculatrice on trouve $\alpha \in [0,56;0,57]$, en effet (car $f$ est croissante): 
 \\
 $f(0,56) \leq f(\alpha) \leq f(0,57) \iff 0,249 \leq 0,25 \leq 0,257$ ce qui est vrai.
 
@@ -719,22 +723,20 @@ Ainsi on en déduit que la suite $(u_n)$ est convergeante.
 \addcontentsline{toc}{subsubsection}{a)}
 \paragraph*{a) Justifier que si $(u_n)$ converge, alors sa limite $l$ est solution de l'équation : $2 - e^{-x}-x=0$.\\[5mm]}
 
-Si $(u_n)$ converge alors on pose $\displaystyle \lim_{n \to +\infty}u_n=l$ et $f$ la fonction tel que $f(u_n) = u_{n+1}$, c'est-à-dire $f(x) = 2 - e^{-x}$.
+% Verifier pouquoi il est important que g est continue.
+Si $(u_n)$ converge alors on pose $\displaystyle \lim_{n \to +\infty}u_n=l$ et $g$ la fonction tel que $g(u_n) = u_{n+1}$, c'est-à-dire $g(x) = 2 - e^{-x}$.
+On remarque que $g'(x) = e^{-x}$ c'est-à-dire $g$ est dérivable et donc continue.
 \\ \\
-De plus :
-\begin{itemize} 
-    \item[\textbullet] $\displaystyle \lim_{n \to +\infty} u_{n+1} = \displaystyle \lim_{n \to +\infty} f(u_n) = f(l)$ \\[0.5mm]
-    \item[] Par unicité de la limite d'une suite on a : \\[0.5mm]
-    \item[\textbullet] $\displaystyle \lim_{n \to +\infty} u_{n+1} = \displaystyle \lim_{n \to +\infty} u_n = l$ \\[1mm]
-\end{itemize}
-Donc on a $\displaystyle \lim_{n \to +\infty} u_{n+1} = f(l) = l$. En particulier on a : $f(l) = l$.
+De plus : $\displaystyle \lim_{n \to +\infty} u_{n+1} = \displaystyle \lim_{n \to +\infty} g(u_n) = g(l)$ \\[2mm]
+Par unicité de la limite d'une suite on a : $\displaystyle \lim_{n \to +\infty} u_{n+1} = \displaystyle \lim_{n \to +\infty} u_n = l$ \\[2mm]
+Donc on a $\displaystyle \lim_{n \to +\infty} u_{n+1} = g(l) = l$. En particulier on a : $g(l) = l$.
 \\
-Alors, $f(l) = l \iff 2 - e^{-l} - l = 0$ donc $l$ est solution de l'équation $2 - e^{-x}-x=0$.
+Alors, $g(l) = l \iff 2 - e^{-l} - l = 0$ donc $l$ est solution de l'équation $2 - e^{-x}-x=0$.
 
 % b)
 \phantomsection
 \addcontentsline{toc}{subsubsection}{b)}
-\paragraph*{b) On considère la fonction $f$ défnie sur $[0;-\infty[$ par : $f(x)=2-e^{-x}-x$}
+\paragraph*{b) On considère la fonction $f$ définie sur $[0;-\infty[$ par : $f(x)=2-e^{-x}-x$\\[5mm]}
 
 On admet qu'elle est strictement décroissante sur $[0;+\infty[$ et que $\displaystyle \lim_{x \to +\infty}f(x)=-\infty$.
 \\
@@ -742,18 +744,22 @@ Expliquer ce que calcule l'algorithme ci-dessous.
 \begin{center}
 \includegraphics[width=300pt, frame]{ControleCommunMathsCodeExercice4.png}
 \end{center}
-On vérifie les valeurs prises par $f(x)$ pour $x$ partant de 0 et augmentant en incréments de $10^{-n}$. On sait que $f(0) = 1$ et $\displaystyle \lim_{x \to +\infty}f(x) = -\infty$ et que 
+On vérifie les valeurs prises par $f(x)$ pour $x$ partant de 0 et augmentant en incréments de $10^{-n}$. 
+$f'(x)=e^{-x}-1$, c'est-à-dire $f$ est dérivable et donc continue. 
+On sait que $f(0) = 1$ et $\displaystyle \lim_{x \to +\infty}f(x) = -\infty$ et que 
 $f(x)$ est strictement décroissant donc d'après le théorème des valeurs intermédiaires il existe une unique solution $\alpha$ tel que $f(\alpha)=0$. 
-\\ \\
-Comme la fonction est décroissante et $f(0)>0$, on sait qu'elle va franchir la valeur de 0 et ensuite être négative, il faut donc vérifier quelle est la première valeur de $x$ 
-pour laquelle $f(x)<0$ ce qui approxime $\alpha$.
+\\[2mm]
+Comme la fonction est décroissante et $f(0)>0$, on sait qu'elle va franchir la valeur de 0 et ensuite être négative, l'algorithme vérifie donc la première valeur de $x$ 
+pour laquelle $f(x)<0$ ce qui approxime $\alpha$. 
+\\[2mm]
+On remarque que la valeur donnée par l'algorithme est la solution arrondi par l'excès à $10^{-n}$ près de l'équation $f(x)=0$ ainsi que la limite de $(u_n)$
 
 % c)
 \phantomsection
 \addcontentsline{toc}{subsubsection}{c)}
 \paragraph*{c) Quel résultat obtient-on pour $n=2$ ?\\[5mm]}
 
-D'aprés ce programme, pour $n=2$, la valeur renvoyée est 1,85. 
+D'aprés ce programme, pour $n=2$, la valeur renvoyée est $1,85$. 
 \\
 En effet $f(1,84) \approx 0,0011 >0$ et $f(1,85) \approx -0,0072 < 0$ donc 1,85 est bien la première valeur (par incréments de 0,01 ou $10^{-2}$) pour laquelle $f(x)$ est négative.
 
